@@ -1,5 +1,5 @@
 import Card from '@/components/card'
-import LoadingSkeleton from '@/components/LoadingSkeleton';
+import LoadingSkeleton from '@/components/loadingSkeleton';
 import Head from 'next/head'
 import { useState } from 'react'
 
