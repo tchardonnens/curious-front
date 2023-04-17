@@ -19,6 +19,12 @@ module.exports = {
       animation: {
         'loading-skeleton': 'loading-skeleton 1.5s infinite',
       },
+      gridTemplateColumns: {
+        sidebar: "300px auto",
+      },
+      gridTemplateRows: {
+        header: "64px auto",
+      },
     },
   },
   plugins: [],
