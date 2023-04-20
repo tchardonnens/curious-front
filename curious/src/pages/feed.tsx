@@ -46,31 +46,9 @@ export default function Home() {
       <div className="flex flex-row w-full h-full">
         <Sidebar history={history}></Sidebar>
         <main className="bg-white dark:bg-dark p-10 flex w-full flex-col items-center justify-center text-center">
-          {(resources || loading) && <div className="max-w-xl w-full mt-10">
-            <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-10 text-slate-900">
-              Understand the subject 💡
-            </h2>
-          </div>}
-
-          {loading && <LoadingSkeleton />}
-          {
-            resources?.
-              content.map((resource, index) => {
-                return (
-                  <Card title={resource.title} description={resource.description} image={resource.image} url={resource.url} key={index} />
-                )
-              })
-          }
-          {(resources || loading) && <div className="max-w-xl w-full mt-10">
-            <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-10 text-slate-900">
-              Want more? 🚀
-            </h2>
-          </div>
-          }
-          {loading && <LoadingSkeleton />}
           <div className="w-full h-full"></div>
           <form className="max-w-xl w-full " onSubmit={(e) => { e.preventDefault(); fetchResources(); }}>
-            <input className="w-full bg-transparent rounded-md border-solid border-2 border-darkerGrey dark:border-darkGrey text-black dark:text-darkGrey shadow-sm focus:border-black focus:ring-black my-5 p-2" placeholder='How to launch a rocket' value={prompt} onChange={e => setPrompt(e.target.value)} />
+            <input className="w-full bg-transparent rounded-md border-solid border-2 border-gray-900 dark:border-darkGrey text-black dark:text-darkGrey shadow-sm focus:border-black focus:ring-black my-5 p-2" placeholder='How to launch a rocket' value={prompt} onChange={e => setPrompt(e.target.value)} />
             <button className="w-full bg-black dark:bg-grey text-white dark:text-black rounded-md p-2" onClick={fetchResources} type="button">Get content!</button>
           </form>
         </main>
