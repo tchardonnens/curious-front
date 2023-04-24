@@ -1,8 +1,8 @@
-import Card from '@/components/card'
+import Card from '@/components/card';
 import LoadingSkeleton from '@/components/loadingSkeleton';
-import Head from 'next/head'
-import { useState } from 'react'
-import Header from '@/components/header'
+import Head from 'next/head';
+import { useState } from 'react';
+import Header from '@/components/header';
 import Sidebar from '@/components/sidebar';
 import { Resources, SidebarProps } from '@/types/props';
 
