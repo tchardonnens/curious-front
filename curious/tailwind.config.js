@@ -35,6 +35,9 @@ module.exports = {
         grey: '#dcdcdc', // light mode header and sidebar borders 
         lightGrey: '#f1f1f1', // sidebar background light mode
         white: '#ffffff', // main light mode backgrounds
+      },
+      width: {
+        '272': '272px',
       }
     },
   },

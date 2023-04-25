@@ -17,7 +17,7 @@ export default function Header() {
           </div>
         </div>
         <div className='h-10 w-10 border-2 border-black dark:border-darkGrey rounded-full overflow-hidden cursor-pointer'>
-          <img className='w-full height-full' src="https://p16-sign-sg.tiktokcdn.com/aweme/720x720/tos-alisg-avt-0068/e7452032d5c35c9dff5d2815c50c572e.jpeg?x-expires=1682103600&x-signature=iX732AUEqgL4EQOkVExlDhKNdok%3D" alt="User" />
+          <img className='w-full height-full' src="" alt="User" />
         </div>
       </>
     );

@@ -4,6 +4,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { FcGoogle } from 'react-icons/fc';
+
 const Auth = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -28,13 +30,18 @@ const Auth = () => {
                     Sign up
                 </h2>
                 <div className='flex flex-col gap-4'>
+                    <Input label="Username" onChange={(ev: any) => setName(ev.target.value)} id="name" value={name}/>
                     <Input label="Email" onChange={(ev: any) => setEmail(ev.target.value)} id="email" type="email" value={email}/>
                     <Input label="Password" onChange={(ev: any) => setPassword(ev.target.value)} id="password" type="password" value={password}/>
                 </div>
-                <button className='bg-black py-3 text-white rounded-md w-full mt-10 hover:bg-dark transition'>Sign Up</button>
-                <p className='text-zinc-500 mt-12'>
+                <button className='bg-black py-3 text-white rounded-md w-full mt-10 hover:bg-dark hover:opacity-90 transition'>Register</button>
+                <button className='bg-white py-2.5 text-black rounded-md w-full mt-4 hover:bg-lightGrey transition flex flex-row items-center justify-center gap-4 border-2'>
+                    <FcGoogle size={25} />
+                    Continue with Google
+                </button>
+                <p className='text-zinc-500 mt-10'>
                     Already have an account?
-                    <Link href="/" className='text-black ml-1 hover:underline cursor-pointer'>
+                    <Link href="/signin" className='text-black ml-1 hover:underline cursor-pointer'>
                         Sign in
                     </Link>
                 </p>
