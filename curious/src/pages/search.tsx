@@ -6,6 +6,8 @@ import Header from '@/components/header';
 import Sidebar from '@/components/sidebar';
 import { Resources, SidebarProps } from '@/types/props';
 
+import { FiSend } from 'react-icons/fi';
+
 export default function Home() {
   const [prompt, setPrompt] = useState('')
   const [resources, setResources] = useState<Resources>()
@@ -71,8 +73,13 @@ export default function Home() {
             {loading && <LoadingSkeleton />}
           </div>
           <form className="max-w-xl w-full " onSubmit={(e) => { e.preventDefault(); fetchResources(); }}>
-            <input className="w-full bg-transparent rounded-md border-solid border-2 border-darkerGrey dark:border-darkGrey text-black dark:text-darkGrey shadow-sm focus:border-black focus:ring-black my-5 p-2" placeholder='How to launch a rocket' value={prompt} onChange={e => setPrompt(e.target.value)} />
-            <button className="w-full bg-black dark:bg-grey text-white dark:text-black rounded-md p-2" onClick={fetchResources} type="button">Get content!</button>
+            <div className='w-auto h-fit-content rounded-md border-solid border-2 border-darkerGrey dark:border-darkGrey flex flex-row shadow-sm p-1'>
+              <textarea className="w-full bg-transparent text-black dark:text-darkGrey resize-none outline-none p-1" rows={1} placeholder='How to launch a rocket' value={prompt} onChange={e => setPrompt(e.target.value)} />
+              <button className='py-1 px-2 rounded-md hover:bg-lightGrey' onClick={fetchResources} type="button">
+                <FiSend className='shrink-0 grow-0' />
+              </button>
+              {/* <button className="w-full bg-black dark:bg-grey text-white dark:text-black rounded-md p-2" onClick={fetchResources} type="button">Get content!</button> */}
+            </div>
           </form>
         </main>
       </div>
