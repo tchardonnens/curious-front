@@ -31,7 +31,7 @@ export default function Header() {
           <Link href="/feed" className='text-center w-16 relative z-10'>
             Feed
           </Link>
-          <div className="indicator absolute z-0 bottom-1/6 top-1/6 h-5/6 w-5/12 bg-white dark:bg-black rounded-full transform transition-all duration-300 ease-in-out" ref={indicatorRef}></div>
+          <div className="indicator absolute z-0 bottom-1/6 top-1/6 h-5/6 w-5/12 bg-white dark:bg-dark rounded-full transform transition-all duration-300 ease-in-out" ref={indicatorRef}></div>
         </div>
         <Link href="/profile" className='h-10 w-10 border-2 border-black dark:border-darkGrey rounded-full overflow-hidden cursor-pointer'>
           <img className='w-full height-full' src="https://pyxis.nymag.com/v1/imgs/d6a/dc7/4a5001b7beea096457f480c8808572428b-09-roll-safe.rsquare.w700.jpg" alt="User" />
@@ -54,7 +54,7 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-white dark:bg-black text-black dark:text-white flex justify-between items-center w-full p-5 border-b-2 border-lightGrey dark:border-black pb-7 sm:px-4 px-2">
+    <header className="bg-white dark:bg-dark text-black dark:text-white flex justify-between items-center w-full p-5 border-b-2 border-lightGrey dark:border-dark pb-7 sm:px-4 px-2">
       <Link href="/">
         <h1 className="sm:text-4xl text-2xl font-bold ml-2 tracking-tight">Curious ⚡️</h1>
       </Link>

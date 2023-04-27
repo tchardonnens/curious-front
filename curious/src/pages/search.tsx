@@ -55,7 +55,7 @@ export default function Home() {
 
         <Sidebar history={history}></Sidebar>
         
-        <main className="bg-white dark:bg-dark p-10 flex w-full flex-col items-center justify-center text-center overflow-hidden">
+        <main className="bg-white dark:bg-anthracite p-10 flex w-full flex-col items-center justify-center text-center overflow-hidden">
           <div className="w-full h-full overflow-scroll flex flex-col items-center justify-start">
             {(resources || loading) && <div className="max-w-xl w-full mt-10">
               <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-10 text-slate-900">

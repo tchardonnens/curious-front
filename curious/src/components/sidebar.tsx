@@ -11,8 +11,8 @@ export default function Sidebar(props: SidebarPropsList) {
   const toggleText = colorMode === 'light' ? 'Dark Mode' : 'Light Mode';
 
   return (
-    // sidebar as a list of buttons
-    <div className="w-272 shrink-0 flex bg-lightGrey dark:bg-black">
+
+    <div className="w-272 shrink-0 flex bg-lightGrey dark:bg-dark">
       <div className="px-4 flex flex-col gap-2 justify-between narrow-sidebar w-full lg:flex-shrink-0 lg:overflow-y-auto">
         <div className="py-4 flex flex-col gap-2">
 
@@ -21,12 +21,17 @@ export default function Sidebar(props: SidebarPropsList) {
             <span className="truncate">New search</span>
           </button>
 
-          <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-            <FiSearch className='shrink-0 grow-0' />
-            <span className="truncate">Rocket Launcher Tutorials</span>
-          </button>
+          <div className='flex flex-col'>
 
+            <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
+              <FiSearch className='shrink-0 grow-0' />
+              <span className="truncate">Rocket Launcher Tutorials</span>
+            </button>
+
+          </div>
+        
         </div>
+
         <div className="py-4 border-t border-solid border-darkGrey">
 
           <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
