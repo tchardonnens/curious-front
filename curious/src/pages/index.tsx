@@ -1,5 +1,3 @@
-import React from 'react';
-import Typing from 'react-typing-effect';
 import Header from '@/components/header';
 import Head from 'next/head';
 
