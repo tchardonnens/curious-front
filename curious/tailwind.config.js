@@ -28,13 +28,17 @@ module.exports = {
       },
       colors: {
         transparent: 'transparent',
-        black: '#000000', // cta buttons, main text, dark mode header, dark mode sidebar
-        dark: '#121212', // dark mode main background, light mode search border
+        black: '#000000', // cta buttons, main text
+        dark: '#121212', // dark mode sidebar and header
+        anthracite: '#1d1d1f', // dark mode main background, light mode search border
         darkerGrey: '#3b3b3f', // light mode sidebar texts
         darkGrey: '#b8b7b7', // dark mode sidebar texts and whole search bar, light mode search bar text
         grey: '#dcdcdc', // light mode header and sidebar borders 
         lightGrey: '#f1f1f1', // sidebar background light mode
         white: '#ffffff', // main light mode backgrounds
+      },
+      width: {
+        '272': '272px',
       }
     },
   },
