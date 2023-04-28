@@ -1,8 +1,15 @@
+import PageHead from "@/components/head";
+import Header from "@/components/header";
+
 const Profile = () => {
     return(
-        <div>
-            
-        </div>
+        <>
+            <PageHead />
+            <Header />
+            <div>
+                
+            </div>
+        </>
     );
 }
 
