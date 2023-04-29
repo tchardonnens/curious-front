@@ -12,7 +12,7 @@ export default function Sidebar(props: SidebarPropsList) {
 
   return (
 
-    <div className="w-272 shrink-0 flex bg-lightGrey dark:bg-dark">
+    <div className="w-272 shrink-0 hidden md:flex bg-lightGrey dark:bg-dark">
       <div className="px-4 flex flex-col gap-2 justify-between narrow-sidebar w-full lg:flex-shrink-0 lg:overflow-y-auto">
         <div className="py-4 flex flex-col gap-2">
 
