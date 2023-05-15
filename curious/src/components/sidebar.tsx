@@ -3,6 +3,7 @@ import React from 'react';
 import useColorMode from '../../hooks/useColorMode';
 
 import { FiPlus, FiSearch, FiTrash, FiSun, FiMoon } from 'react-icons/fi';
+import { AiOutlineUser } from 'react-icons/ai';
 
 
 interface SidebarProps extends SidebarPropsList {
@@ -47,6 +48,11 @@ export default function Sidebar({ isSidebarOpen, ...props }: SidebarProps) {
           <button onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
             {toggleIcon}
             <span className="truncate">{toggleText}</span>
+          </button>
+          
+          <button onClick={() => {}} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start md:hidden">
+            <AiOutlineUser className='shrink-0 grow-0' />
+            <span className="truncate">My Account</span>
           </button>
           
         </div>
