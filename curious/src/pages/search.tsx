@@ -42,12 +42,12 @@ export default function Home() {
       <PageHead />
       <Header />
 
-      <div className="flex flex-row w-full h-full">
+      <div className="flex flex-row w-full h-full overflow-hidden">
 
         <Sidebar history={history}></Sidebar>
         
-        <main className="bg-white dark:bg-anthracite p-10 flex w-full flex-col items-center justify-center text-center overflow-hidden">
-          <div className="w-full h-full overflow-scroll flex flex-col items-center justify-start">
+        <main className="bg-white dark:bg-anthracite flex w-full flex-col items-center justify-center text-center">
+          <div className="w-full h-full flex flex-col items-center justify-start px-4 sm:px-10 pt-4 pb-8 sm:py-10 overflow-scroll">
             {(resources || loading) && <div className="max-w-xl w-full mt-10">
               <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-10 text-slate-900">
                 Understand the subject 💡
@@ -72,9 +72,9 @@ export default function Home() {
             {loading && <LoadingSkeleton />}
           </div>
 
-          <form className="max-w-xl w-full " onSubmit={(e) => { e.preventDefault(); fetchResources(); }}>
+          <form className="max-w-xl w-full px-4 sm:px-10 pb-4 sm:pb-10 relative z-9 bg-transparent" onSubmit={(e) => { e.preventDefault(); fetchResources(); }}>
             <div className='w-auto h-fit-content rounded-md border-solid border-2 border-darkerGrey dark:border-darkGrey flex flex-row shadow-sm p-1'>
-              <textarea className="w-full bg-transparent text-black dark:text-darkGrey resize-none outline-none p-1 overflow-y-hidden max-h-24" rows={1} placeholder='How to launch a rocket' value={prompt} 
+              <textarea className="w-full text-black dark:text-darkGrey resize-none outline-none p-1 overflow-y-hidden max-h-24" rows={1} placeholder='How to launch a rocket' value={prompt} 
               onChange={(e) => {
                 setPrompt(e.target.value);
                 handleTextareaChange(e);

@@ -71,7 +71,7 @@ export default function Header() {
   }
 
   return (
-    <header className={`bg-white ${['/search', '/feed', '/profile'].includes(router.pathname) ? 'dark:bg-dark dark:text-white dark:border-dark' : ''} text-black flex justify-between items-center w-full p-5 border-b-2 border-lightGrey pb-7 sm:px-4 px-2`}>
+    <header className={`bg-white ${['/search', '/feed', '/profile'].includes(router.pathname) ? 'dark:bg-dark dark:text-white dark:border-dark' : ''} text-black flex justify-between items-center w-full p-5 border-b-2 border-lightGrey pb-7 px-4`}>
       <div className='flex flex-row items-center'>
         {sidebarBtn}
         <Link href="/" title='Homepage'>
