@@ -14,6 +14,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const [history, setHistory] = useState<SidebarProps[]>([])
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const handleTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPrompt(event.target.value);
     event.target.style.height = 'auto';
@@ -40,11 +42,11 @@ export default function Home() {
   return (
     <>
       <PageHead />
-      <Header />
+      <Header setIsSidebarOpen={setIsSidebarOpen} />
 
       <div className="flex flex-row w-full h-full overflow-hidden">
 
-        <Sidebar history={history}></Sidebar>
+        <Sidebar history={history} isSidebarOpen={isSidebarOpen} ></Sidebar>
         
         <main className="bg-white dark:bg-anthracite flex w-full flex-col items-center justify-center text-center">
           <div className="w-full h-full flex flex-col items-center justify-start px-4 sm:px-10 pt-4 pb-8 sm:py-10 overflow-scroll">
@@ -74,7 +76,7 @@ export default function Home() {
 
           <form className="max-w-xl w-full px-4 sm:px-10 pb-4 sm:pb-10 relative z-9 bg-transparent" onSubmit={(e) => { e.preventDefault(); fetchResources(); }}>
             <div className='w-auto h-fit-content rounded-md border-solid border-2 border-darkerGrey dark:border-darkGrey flex flex-row shadow-sm p-1'>
-              <textarea className="w-full text-black dark:text-darkGrey resize-none outline-none p-1 overflow-y-hidden max-h-24" rows={1} placeholder='How to launch a rocket' value={prompt} 
+              <textarea className="w-full text-black dark:text-darkGrey bg-transparent resize-none outline-none p-1 overflow-y-hidden max-h-24" rows={1} placeholder='How to launch a rocket' value={prompt} 
               onChange={(e) => {
                 setPrompt(e.target.value);
                 handleTextareaChange(e);

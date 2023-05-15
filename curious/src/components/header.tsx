@@ -5,7 +5,13 @@ import { useEffect, useRef } from 'react';
 
 import { HiBars3 } from 'react-icons/hi2';
 
-export default function Header() {
+import { Dispatch, SetStateAction } from 'react';
+
+interface HeaderProps {
+  setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function Header({ setIsSidebarOpen }: HeaderProps) {
   const router = useRouter();
   let headerContent;
   let sidebarBtn;
@@ -64,10 +70,10 @@ export default function Header() {
   }
   if (router.pathname === '/feed' || router.pathname === '/search' || router.pathname === '/profile') {
     sidebarBtn = (
-      <button className='flex md:hidden hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
+      <button onClick={() => setIsSidebarOpen(prev => !prev)} className='flex md:hidden hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
         <HiBars3 className='shrink-0 grow-0' size={30} />
       </button>
-    )
+    );
   }
 
   return (
@@ -82,3 +88,4 @@ export default function Header() {
     </header>
   );
 }
+

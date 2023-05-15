@@ -4,7 +4,12 @@ import useColorMode from '../../hooks/useColorMode';
 
 import { FiPlus, FiSearch, FiTrash, FiSun, FiMoon } from 'react-icons/fi';
 
-export default function Sidebar(props: SidebarPropsList) {
+
+interface SidebarProps extends SidebarPropsList {
+  isSidebarOpen: boolean;
+}
+
+export default function Sidebar({ isSidebarOpen, ...props }: SidebarProps) {
   const [colorMode, setColorMode] = useColorMode();
 
   const toggleIcon = colorMode === 'light' ? <FiMoon className='shrink-0 grow-0' /> : <FiSun className='shrink-0 grow-0' />;
@@ -12,7 +17,7 @@ export default function Sidebar(props: SidebarPropsList) {
 
   return (
 
-    <div className="w-full md:w-272 shrink-0 relative z-9 md:static md:z-0 md:flex bg-white dark:bg-anthracite md:bg-lightGrey md:dark:bg-dark">
+    <div className={`w-full md:w-272 shrink-0 md:flex ${isSidebarOpen ? 'flex' : 'hidden'} relative z-9 md:static md:z-0 md:flex bg-white dark:bg-dark md:bg-lightGrey`}>
       <div className="px-4 flex flex-col gap-2 justify-between narrow-sidebar w-full h-full lg:flex-shrink-0 lg:overflow-y-auto">
         <div className="py-4 flex flex-col gap-2">
 
