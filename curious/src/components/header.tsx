@@ -54,7 +54,13 @@ export default function Header({ setIsSidebarOpen }: HeaderProps) {
         </Link>
       </>
     );
+<<<<<<< HEAD
   } else if (router.pathname === '/') {
+=======
+  } else if (router.pathname === '/signup' || router.pathname === '/signin' || router.pathname === '/profile') {
+    headerContent = null;
+  } else {
+>>>>>>> 0ac6813 (Main started)
     headerContent = (
       <div className='flex flex-row gap-4'>
         <Link href="/signup" title='Sign Up'>
