@@ -5,7 +5,7 @@ import  { BiLockOpenAlt } from 'react-icons/bi';
 import { IoIosNotifications } from 'react-icons/io';
 import { FiSun, FiMoon } from 'react-icons/fi';
 
-export default function profileSidebar() {
+export default function ProfileSidebar() {
   const [colorMode, setColorMode] = useColorMode();
 
   const toggleIcon = colorMode === 'light' ? <FiMoon className='shrink-0 grow-0' /> : <FiSun className='shrink-0 grow-0' />;
