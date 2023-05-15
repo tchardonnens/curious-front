@@ -38,7 +38,7 @@ export default function Header() {
         </Link>
       </>
     );
-  } else if (router.pathname === '/signup' || router.pathname === '/signin') {
+  } else if (router.pathname === '/signup' || router.pathname === '/signin' || router.pathname === '/profile') {
     headerContent = null;
   } else {
     headerContent = (
