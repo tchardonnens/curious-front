@@ -3,8 +3,16 @@ import React from 'react';
 import useColorMode from '../../hooks/useColorMode';
 
 import { FiPlus, FiSearch, FiTrash, FiSun, FiMoon } from 'react-icons/fi';
+import { AiOutlineUser } from 'react-icons/ai';
+import { useRouter } from 'next/router';
 
-export default function Sidebar(props: SidebarPropsList) {
+
+interface SidebarProps extends SidebarPropsList {
+  isSidebarOpen: boolean;
+}
+
+export default function Sidebar({ isSidebarOpen, ...props }: SidebarProps) {
+  const router = useRouter();
   const [colorMode, setColorMode] = useColorMode();
 
   const toggleIcon = colorMode === 'light' ? <FiMoon className='shrink-0 grow-0' /> : <FiSun className='shrink-0 grow-0' />;
@@ -12,8 +20,8 @@ export default function Sidebar(props: SidebarPropsList) {
 
   return (
 
-    <div className="w-272 shrink-0 flex bg-lightGrey dark:bg-dark">
-      <div className="px-4 flex flex-col gap-2 justify-between narrow-sidebar w-full lg:flex-shrink-0 lg:overflow-y-auto">
+    <div className={`w-full md:w-272 shrink-0 md:flex ${isSidebarOpen ? 'flex' : 'hidden'} relative z-9 md:static md:z-0 md:flex bg-white dark:bg-dark md:bg-lightGrey`}>
+      <div className="px-4 flex flex-col gap-2 justify-between narrow-sidebar w-full h-full lg:flex-shrink-0 lg:overflow-y-auto">
         <div className="py-4 flex flex-col gap-2">
 
           <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-grey dark:hover:bg-darkerGrey border-2 border-darkerGrey dark:border-darkGrey transition-colors flex flex-row gap-4 items-center justify-start">
@@ -42,6 +50,11 @@ export default function Sidebar(props: SidebarPropsList) {
           <button onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
             {toggleIcon}
             <span className="truncate">{toggleText}</span>
+          </button>
+          
+          <button onClick={() => router.push('/profile')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start md:hidden">
+            <AiOutlineUser className='shrink-0 grow-0' />
+            <span className="truncate">My Account</span>
           </button>
           
         </div>
