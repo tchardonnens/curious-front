@@ -8,7 +8,7 @@ import { HiBars3 } from 'react-icons/hi2';
 import { Dispatch, SetStateAction } from 'react';
 
 interface HeaderProps {
-  setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
+  setIsSidebarOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function Header({ setIsSidebarOpen }: HeaderProps) {
@@ -70,7 +70,7 @@ export default function Header({ setIsSidebarOpen }: HeaderProps) {
   }
   if (router.pathname === '/feed' || router.pathname === '/search' || router.pathname === '/profile') {
     sidebarBtn = (
-      <button onClick={() => setIsSidebarOpen(prev => !prev)} className='flex md:hidden hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
+      <button onClick={() => setIsSidebarOpen?.(prev => !prev)} className='flex md:hidden hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
         <HiBars3 className='shrink-0 grow-0' size={30} />
       </button>
     );
