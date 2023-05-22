@@ -1,4 +1,5 @@
 import PageHead from "@/components/head";
+import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
 import Head from 'next/head';
 import React from "react";
@@ -27,7 +28,7 @@ const Profile: React.FC<ProfileProps> = ({
 
       <div className="flex flex-row w-full h-full">
 
-        <Sidebar history={[]}></Sidebar>
+        <Sidebar history={[]} isSidebarOpen={false}></Sidebar>
 
 
 
@@ -45,7 +46,7 @@ const Profile: React.FC<ProfileProps> = ({
           </div>
 
           <div className="flex flex-col space-y-4 w-1/2 mt-10 px-4">
-            
+
             <div className="flex flex-row gap-4 items-center pt-6">
               <div className="font-semibold text-lg text-black dark:text-white">
                 Name{name}
@@ -64,12 +65,12 @@ const Profile: React.FC<ProfileProps> = ({
             <div className="flex flex-row gap-6">
               <div className="text-darkerGrey dark:text-darkGrey">
                 <span className="font-semibold text-black dark:text-white mr-2">200{following}</span>
-                    Following
+                Following
               </div>
 
               <div className="text-darkerGrey dark:text-darkGrey">
                 <span className="font-semibold text-black dark:text-white mr-2">180{followers}</span>
-                  Followers
+                Followers
               </div>
             </div>
 
