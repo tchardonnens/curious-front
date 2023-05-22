@@ -1,3 +1,4 @@
+import PageHead from "@/components/head";
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
 import Head from 'next/head';
@@ -37,7 +38,7 @@ const Profile: React.FC<ProfileProps> = ({
 
       <div className="flex flex-row w-full h-full">
 
-        <Sidebar isSidebarOpen={false} history={[]} ></Sidebar>
+        <Sidebar history={[]} isSidebarOpen={false}></Sidebar>
 
 
 
