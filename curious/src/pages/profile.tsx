@@ -42,7 +42,7 @@ const Profile: React.FC<ProfileProps> = ({
 
         <main className="bg-white dark:bg-anthracite p-10 flex w-full flex-col overflow-hidden">
 
-          <div className="bg-white">
+          <div>
 
             <div className="flex items-center relative">
 
