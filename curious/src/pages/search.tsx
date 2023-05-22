@@ -61,50 +61,7 @@ export default function Home() {
             </div>}
 
             {loading && <LoadingSkeleton />}
-
-            {resources && resources.map((resource, index) => {
-              return (
-                <div key={index} className="flex flex-col items-center justify-center">
-                  <h2 className='text-3xl m-5 font-bold'>{resource.chatgpt}</h2>
-                  <h3 className='text-2xl mb-5'>YouTube</h3>
-                  <div className='grid grid-cols-2 gap-6'>
-                    {resource.content.youtube.map((result, idx) => (
-                      <Card
-                        key={idx}
-                        title={result.title}
-                        description={result.snippet}
-                        image={result.image}
-                        url={result.link}
-                      />
-                    ))}
-                  </div>
-                  <h3 className='text-2xl m-5'>Reddit</h3>
-                  <div className='grid grid-cols-2 gap-6'>
-                    {resource.content.reddit.map((result, idx) => (
-                      <Card
-                        key={idx}
-                        title={result.title}
-                        description={result.snippet}
-                        image={result.image}
-                        url={result.link}
-                      />
-                    ))}
-                  </div>
-                  <h3 className='text-2xl m-5'>Twitter</h3>
-                  <div className='grid grid-cols-2 gap-6'>
-                    {resource.content.twitter.map((result, idx) => (
-                      <Card
-                        key={idx}
-                        title={result.title}
-                        description={result.snippet}
-                        image={result.image}
-                        url={result.link}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )
-            })}
+            {/* iterate over content contained in Resources content, using AllSourcesCleanGoogleResult and CleanGoogleResults to make cards with properties */}
 
             {(resources || loading) && <div className="max-w-xl w-full mt-10">
               <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-10 text-dark dark:text-white">
