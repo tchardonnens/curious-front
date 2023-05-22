@@ -54,14 +54,57 @@ export default function Home() {
 
         <main className="bg-white dark:bg-anthracite flex w-full flex-col items-center justify-center text-center">
           <div className="w-full h-full flex flex-col items-center justify-start px-4 sm:px-10 pt-4 pb-8 sm:py-10 overflow-scroll">
-            {(resources || loading) && <div className="max-w-xl w-full mt-10">
-              <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-10 text-dark dark:text-white">
+            {(resources || loading) && <div className="max-w-xl w-full mt-2">
+              <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-5 text-slate-900">
                 Understand the subject 💡
               </h2>
             </div>}
 
             {loading && <LoadingSkeleton />}
-            {/* iterate over content contained in Resources content, using AllSourcesCleanGoogleResult and CleanGoogleResults to make cards with properties */}
+
+            {resources && resources.map((resource, index) => {
+              return (
+                <div key={index} className="flex flex-col items-center justify-center">
+                  <h2 className='text-3xl m-5 font-bold'>{resource.prompt.title}</h2>
+                  <h3 className='text-2xl mb-5'>YouTube</h3>
+                  <div className='grid grid-cols-2 gap-6'>
+                    {resource.content.youtube.map((result, idx) => (
+                      <Card
+                        key={idx}
+                        title={result.title}
+                        description={result.snippet}
+                        image={result.image}
+                        url={result.link}
+                      />
+                    ))}
+                  </div>
+                  <h3 className='text-2xl m-5'>Reddit</h3>
+                  <div className='grid grid-cols-2 gap-6'>
+                    {resource.content.reddit.map((result, idx) => (
+                      <Card
+                        key={idx}
+                        title={result.title}
+                        description={result.snippet}
+                        image={result.image}
+                        url={result.link}
+                      />
+                    ))}
+                  </div>
+                  <h3 className='text-2xl m-5'>Twitter</h3>
+                  <div className='grid grid-cols-2 gap-6'>
+                    {resource.content.twitter.map((result, idx) => (
+                      <Card
+                        key={idx}
+                        title={result.title}
+                        description={result.snippet}
+                        image={result.image}
+                        url={result.link}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
 
             {(resources || loading) && <div className="max-w-xl w-full mt-10">
               <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-10 text-dark dark:text-white">

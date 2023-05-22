@@ -38,7 +38,14 @@ export type AllSourcesCleanGoogleResult = {
   twitter: CleanGoogleResults[];
 }
 
+export type Prompt = {
+  id: number;
+  title: string;
+  user_id: number;
+  created_at: string;
+}
+
 export type Resources = {
-  chatgpt: string;
+  prompt: Prompt;
   content: AllSourcesCleanGoogleResult;
 }

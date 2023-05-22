@@ -1,4 +1,3 @@
-import Card from '@/components/card';
 import Post from '@/components/post';
 import LoadingSkeleton from '@/components/loadingSkeleton';
 import { useState } from 'react';
@@ -32,18 +31,7 @@ export default function Home() {
               </h2>
             </div>}
             <Post />
-            <Post />
-            <Post />
-            <Post />
             {loading && <LoadingSkeleton />}
-            {
-              resources?.
-                content.map((resource, index) => {
-                  return (
-                    <Card title={resource.title} description={resource.description} image={resource.image} url={resource.url} key={index} />
-                  )
-                })
-            }
           </div>
         </main>
       </div>
