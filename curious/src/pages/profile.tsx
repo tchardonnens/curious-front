@@ -1,7 +1,7 @@
 import PageHead from "@/components/head";
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
-import Head from 'next/head';
+import Image from "next/image";
 import React from "react";
 
 interface ProfileProps {
@@ -13,13 +13,11 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = ({
-
   name,
   username,
-  bio,
+  bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam quis aliquam ultricies, nunc nisl ultricies nunc, vitae ultricies nisl nunc eu nisl. Donec euismod, diam quis aliquam ultricies, nunc nisl ultricies nunc, vitae ultricies nisl nunc eu nisl.",
   followers,
   following
-
 }) => {
   return (
     <>
@@ -30,17 +28,15 @@ const Profile: React.FC<ProfileProps> = ({
 
         <Sidebar history={[]} isSidebarOpen={false}></Sidebar>
 
-
-
         <main className="bg-white dark:bg-anthracite p-10 flex w-full flex-col overflow-hidden">
           <div className="flex items-center relative">
 
             <div className="w-full h-40">
-              <img src="sf-dream.png" alt="Avatar" className="w-full h-full object-cover rounded-t-xl" />
+              <Image src="/sf-dream.png" alt="Avatar" width={500} height={200} className="w-full h-full object-cover rounded-t-xl" />
             </div>
 
             <div className="w-24 h-24 rounded-full overflow-hidden absolute bottom-0 left-6 translate-y-12">
-              <img src="PP-test.png" alt="Avatar" className="w-full h-full object-cover" />
+              <Image src="/PP-test.png" alt="Avatar" width={200} height={200} className="w-full h-full object-cover" />
             </div>
 
           </div>
@@ -58,9 +54,8 @@ const Profile: React.FC<ProfileProps> = ({
             </div>
 
             <div className="text-darkerGrey dark:text-darkGrey">
-              Bio ...... ....... ........ ....... ........ .......... ........... ......... ............ ............ .......... ......... ........{bio}
+              {bio}
             </div>
-
 
             <div className="flex flex-row gap-6">
               <div className="text-darkerGrey dark:text-darkGrey">
@@ -73,9 +68,7 @@ const Profile: React.FC<ProfileProps> = ({
                 Followers
               </div>
             </div>
-
           </div>
-
         </main>
       </div>
     </>
