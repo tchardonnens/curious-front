@@ -17,7 +17,7 @@ export default function Header({ setIsSidebarOpen }: HeaderProps) {
   let sidebarBtn;
   const indicatorRef = useRef<HTMLDivElement | null>(null);
   const searchRef = useRef<HTMLAnchorElement | null>(null);
-  const feedRef = useRef<HTMLAnchorElement | null>(null);  
+  const feedRef = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
     const path = router.pathname;
@@ -35,7 +35,7 @@ export default function Header({ setIsSidebarOpen }: HeaderProps) {
       }
     }
   }, [router.pathname]);
-  
+
 
   if (router.pathname === '/feed' || router.pathname === '/search') {
     headerContent = (
