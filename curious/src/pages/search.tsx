@@ -10,7 +10,7 @@ import { FiSend } from 'react-icons/fi';
 
 export default function Home() {
   const [prompt, setPrompt] = useState('')
-  const [resources, setResources] = useState<Resources>()
+  const [resources, setResources] = useState<Resources[]>()
   const [loading, setLoading] = useState(false)
   const [history, setHistory] = useState<SidebarProps[]>([])
 
@@ -47,7 +47,7 @@ export default function Home() {
       <div className="flex flex-row w-full h-full overflow-hidden">
 
         <Sidebar history={history} isSidebarOpen={isSidebarOpen} ></Sidebar>
-        
+
         <main className="bg-white dark:bg-anthracite flex w-full flex-col items-center justify-center text-center">
           <div className="w-full h-full flex flex-col items-center justify-start px-4 sm:px-10 pt-4 pb-8 sm:py-10 overflow-scroll">
             {(resources || loading) && <div className="max-w-xl w-full mt-10">
@@ -57,14 +57,8 @@ export default function Home() {
             </div>}
 
             {loading && <LoadingSkeleton />}
-            {
-              resources?.
-                content.map((resource, index) => {
-                  return (
-                    <Card title={resource.title} description={resource.description} image={resource.image} url={resource.url} key={index} />
-                  )
-                })
-            }
+            {/* iterate over content contained in Resources content, using AllSourcesCleanGoogleResult and CleanGoogleResults to make cards with properties */}
+
             {(resources || loading) && <div className="max-w-xl w-full mt-10">
               <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-10 text-slate-900">
                 Want more? 🚀
@@ -76,11 +70,11 @@ export default function Home() {
 
           <form className="max-w-xl w-full px-4 sm:px-10 pb-4 sm:pb-10 relative z-9 bg-transparent" onSubmit={(e) => { e.preventDefault(); fetchResources(); }}>
             <div className='w-auto h-fit-content rounded-md border-solid border-2 border-darkerGrey dark:border-darkGrey flex flex-row shadow-sm p-1'>
-              <textarea className="w-full text-black dark:text-darkGrey bg-transparent resize-none outline-none p-1 overflow-y-hidden max-h-24" rows={1} placeholder='How to launch a rocket' value={prompt} 
-              onChange={(e) => {
-                setPrompt(e.target.value);
-                handleTextareaChange(e);
-              }} />
+              <textarea className="w-full text-black dark:text-darkGrey bg-transparent resize-none outline-none p-1 overflow-y-hidden max-h-24" rows={1} placeholder='How to launch a rocket' value={prompt}
+                onChange={(e) => {
+                  setPrompt(e.target.value);
+                  handleTextareaChange(e);
+                }} />
               <button className='py-1 px-2 rounded-md hover:bg-lightGrey hover:dark:bg-darkerGrey' onClick={fetchResources} type="button" title='Send' >
                 <FiSend className='shrink-0 grow-0 text-black dark:text-darkGrey' />
               </button>
