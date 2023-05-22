@@ -36,6 +36,7 @@ module.exports = {
         grey: '#dcdcdc', // light mode header and sidebar borders 
         lightGrey: '#f1f1f1', // sidebar background light mode
         white: '#ffffff', // main light mode backgrounds
+        placeholder: '#a9a9a9', //placeholder color for index typing animation
       },
       width: {
         '272': '272px',
