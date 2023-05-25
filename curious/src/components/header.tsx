@@ -54,6 +54,21 @@ export default function Header({ setIsSidebarOpen }: HeaderProps) {
         </Link>
       </>
     );
+  } else if (router.pathname === '/profile') {
+    headerContent = (
+      <>
+        <div className='bg-lightGrey dark:bg-darkerGrey rounded-full p-2 flex flex-row items-center gap-3 relative'>
+          <Link href="/search" className='text-center w-16 relative z-10' title='Search' ref={searchRef}>
+            Search
+          </Link>
+          <hr className='h-4 w-0 border' />
+          <Link href="/feed" className={`text-center w-16 relative z-10`} title='Feed' ref={feedRef}>
+            Feed
+          </Link>
+        </div>
+        <div></div>
+      </>
+    );
   } else if (router.pathname === '/') {
     headerContent = (
       <div className='flex flex-row gap-4'>
