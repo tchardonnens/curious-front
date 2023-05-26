@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <PageHead />
       <Header />
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4">
+      <main id='home' className="flex flex-1 w-full flex-col items-center justify-center text-center px-4">
         
         <h1 className="sm:text-6xl text-4xl max-w-[708px] font-bold text-slate-900">Learn faster with adaptative content</h1>
         <h2 className="sm:text-1xl text-1xl max-w-[708px] mt-5 text-slate-600">Knowledge portal powered with ChatGPT</h2>
