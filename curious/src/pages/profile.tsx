@@ -1,8 +1,9 @@
 import PageHead from "@/components/head";
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
+import { Resources, SidebarProps } from '@/types/props';
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 interface ProfileProps {
   name: string;
@@ -19,14 +20,17 @@ const Profile: React.FC<ProfileProps> = ({
   followers,
   following
 }) => {
+  const [history, setHistory] = useState<SidebarProps[]>([])
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <>
       <PageHead />
-      <Header />
+      <Header setIsSidebarOpen={setIsSidebarOpen} />
 
-      <div className="flex flex-row w-full h-full">
+      <div className="flex flex-row w-full h-full overflow-hidden">
 
-        <Sidebar history={[]} isSidebarOpen={false}></Sidebar>
+      <Sidebar history={history} isSidebarOpen={isSidebarOpen} ></Sidebar>
 
         <main className="bg-white dark:bg-anthracite p-10 flex w-full flex-col overflow-hidden">
           <div className="flex items-center relative">
