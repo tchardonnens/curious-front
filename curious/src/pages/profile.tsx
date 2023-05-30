@@ -45,7 +45,7 @@ const Profile: React.FC<ProfileProps> = ({
 
           </div>
 
-          <div className="flex flex-col space-y-4 w-1/2 mt-10 px-4">
+          <div className="flex flex-col space-y-4 w-full max-w-[580px] mt-10 px-4">
 
             <div className="flex flex-row gap-4 items-center pt-6">
               <div className="font-semibold text-lg text-black dark:text-white">

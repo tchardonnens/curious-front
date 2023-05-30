@@ -29,17 +29,15 @@ export default function Post(props: PostProps) {
             
             <div className='text-darkerGrey dark:text-white p-4 mb-3'>
                 <h3>Searched for prompt: <b>{prompt}</b> </h3>
-                
-                
+                <div className='text-darkGrey dark:text-neutral-400 p-4'>
+                  time
+                </div>
             </div>
 
             <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6'>
-                    <Card title={"cardTitle "} description={"description"} image={"image"} url={"url"} key={0} />
-                    <Card title={"cardTitle 2 "} description={"description"} image={"image"} url={"url"} key={0} />
-                    <Card title={"cardTitle 3"} description={"description"} image={"image"} url={"url"} key={0} />
-            </div>
-            <div className='text-darkGrey dark:text-slate-200 p-4 justify-start text-left'>
-                time
+                <Card title={"cardTitle "} description={"description"} image={"image"} url={"url"} key={0} />
+                <Card title={"cardTitle 2 "} description={"description"} image={"image"} url={"url"} key={0} />
+                <Card title={"cardTitle 3"} description={"description"} image={"image"} url={"url"} key={0} />
             </div>
         </div>
         <hr />
