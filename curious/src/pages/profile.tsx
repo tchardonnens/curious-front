@@ -21,16 +21,7 @@ const Profile: React.FC<ProfileProps> = ({
 }) => {
   return (
     <>
-      <Head>
-        <title>Curious</title>
-        <meta name="description" content="Knowledge portal powered with ChatGPT" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta property="og:title" content="Curious" />
-        <meta property="og:description" content="Knowledge portal powered with ChatGPT" />
-        <meta property="og:image" content="/sf-dream.png" />
-        <meta property="og:url" content="https://verycurious.xyz" />
-      </Head>
+      <PageHead />
       <Header />
 
       <div className="flex flex-row w-full h-full">
