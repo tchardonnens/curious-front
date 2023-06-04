@@ -5,12 +5,23 @@ import Link from 'next/link';
 import { useCallback, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { useRouter } from 'next/router';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Auth = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(false);
     const router = useRouter();
+
+    const toasterLogin = () => {
+        toast.promise(
+            login(),
+            {
+                loading: 'Logging in... ⏳',
+                success: <b>Have fun! 🥳</b>,
+                error: <b>Hmmm... Check your credentials 🤔</b>,
+            }
+        );
+    }
 
     const loginForAccessToken = async (username: string, password: string) => {
         const response = await fetch('https://api.verycurious.xyz/token', {
@@ -33,19 +44,19 @@ const Auth = () => {
     };
 
     const login = useCallback(async () => {
-        setError(false);
         try {
             await loginForAccessToken(username, password);
             router.push('/search');
         } catch (error) {
             console.error(error);
-            setError(true);
+            throw error;
         }
     }, [username, password, router]);
 
 
     return (
         <>
+            <Toaster />
             <PageHead />
             <Header />
             <div className='flex justify-center'>
@@ -57,8 +68,7 @@ const Auth = () => {
                         <Input label="Email or Username" onChange={(e: any) => setUsername(e.target.value)} id="email" type="email" value={username} />
                         <Input label="Password" onChange={(e: any) => setPassword(e.target.value)} id="password" type="password" value={password} />
                     </div>
-                    <button onClick={login} className='bg-black py-3 text-white rounded-md w-full mt-10 hover:bg-dark hover:opacity-90 transition'>Login</button>
-                    {error && <p className='text-red-500 mt-4'>Invalid credentials</p>}
+                    <button onClick={toasterLogin} className='bg-black py-3 text-white rounded-md w-full mt-10 hover:bg-dark hover:opacity-90 transition'>Login</button>
                     <button className='bg-white py-2.5 text-black rounded-md w-full mt-4 hover:bg-lightGrey transition flex flex-row items-center justify-center gap-4 border-2'>
                         <FcGoogle size={25} />
                         Continue with Google
