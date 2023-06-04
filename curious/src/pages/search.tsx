@@ -29,8 +29,7 @@ export default function Home() {
     console.log(prompt)
     setLoading(true)
     console.log('fetching...')
-    // post request to /curious
-    const res = await fetch('http://127.0.0.1:8000/curious', {
+    const res = await fetch('https://api.verycurious.xyz/curious', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -4,7 +4,7 @@ import Input from '@/components/input';
 import Link from 'next/link';
 import { useCallback, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 const Auth = () => {
     const [username, setUsername] = useState('');
@@ -13,7 +13,7 @@ const Auth = () => {
     const router = useRouter();
 
     const loginForAccessToken = async (username: string, password: string) => {
-        const response = await fetch('http://127.0.0.1:8000/token', {
+        const response = await fetch('https://api.verycurious.xyz/token', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
