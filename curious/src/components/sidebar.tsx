@@ -1,5 +1,5 @@
+import React, { useEffect, useState } from 'react';
 import { SidebarPropsList } from '@/types/props';
-import React from 'react';
 import useColorMode from '../../hooks/useColorMode';
 
 import { FiPlus, FiSearch, FiTrash, FiSun, FiMoon } from 'react-icons/fi';
@@ -13,11 +13,19 @@ interface SidebarProps extends SidebarPropsList {
 
 export default function Sidebar({ isSidebarOpen, ...props }: SidebarProps) {
   const router = useRouter();
+  const [isMounted, setIsMounted] = useState(false);
   const [colorMode, setColorMode] = useColorMode();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, [])
+
+  if (!isMounted) {
+    return null;
+  }
 
   const toggleIcon = colorMode === 'light' ? <FiMoon className='shrink-0 grow-0' /> : <FiSun className='shrink-0 grow-0' />;
   const toggleText = colorMode === 'light' ? 'Dark Mode' : 'Light Mode';
-
   return (
 
     <div className={`w-full md:w-272 shrink-0 md:flex ${isSidebarOpen ? 'flex' : 'hidden'} relative z-9 md:static md:z-0 md:flex bg-white dark:bg-dark md:bg-lightGrey`}>
@@ -37,7 +45,7 @@ export default function Sidebar({ isSidebarOpen, ...props }: SidebarProps) {
             </button>
 
           </div>
-        
+
         </div>
 
         <div className="py-4 border-t border-solid border-darkGrey">
@@ -51,12 +59,12 @@ export default function Sidebar({ isSidebarOpen, ...props }: SidebarProps) {
             {toggleIcon}
             <span className="truncate">{toggleText}</span>
           </button>
-          
+
           <button onClick={() => router.push('/profile')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start md:hidden">
             <AiOutlineUser className='shrink-0 grow-0' />
             <span className="truncate">My Account</span>
           </button>
-          
+
         </div>
 
 

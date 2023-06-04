@@ -22,7 +22,7 @@ export default function Post(props: PostProps) {
       <div className='flex flex-col justify-start w-full rounded-lg p-6 mb-3'>
 
         <div className='flex flex-col'>
-          <h2 className="text-2xl 'text-black dark:text-slate-100' ">{username}</h2>
+          <h2 className="text-2xl text-black dark:text-white">{username}</h2>
         </div>
 
         <div className='text-darkerGrey dark:text-slate-100 p-4 mb-3'>
