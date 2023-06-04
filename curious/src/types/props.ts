@@ -24,7 +24,28 @@ export type YoutubeVideoSimple = {
   image: string;
 }
 
+export type CleanGoogleResults = {
+  title: string;
+  snippet: string;
+  link: string;
+  long_description: string;
+  image: string;
+}
+
+export type AllSourcesCleanGoogleResult = {
+  youtube: CleanGoogleResults[];
+  reddit: CleanGoogleResults[];
+  twitter: CleanGoogleResults[];
+}
+
+export type Prompt = {
+  id: number;
+  title: string;
+  user_id: number;
+  created_at: string;
+}
+
 export type Resources = {
-  chatgpt: SubjectsList;
-  content: YoutubeVideoSimple[];
+  prompt: Prompt;
+  content: AllSourcesCleanGoogleResult;
 }
