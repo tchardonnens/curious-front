@@ -30,3 +30,13 @@ html, body {
   @apply flex;
   @apply flex-col;
 }
+
+body.dark {
+  background: #1d1d1f;
+}
+
+body.dark:has(#home),
+body.dark:has(#signIn),
+body.dark:has(#signUp) {
+  background: #fff !important;
+}
