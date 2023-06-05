@@ -59,7 +59,7 @@ const Auth = () => {
             <Toaster />
             <PageHead />
             <Header />
-            <div className='flex justify-center'>
+            <div id="signIn" className='flex justify-center'>
                 <div className='bg-transparent px-8 md:px-16 py-16 self-center mt-2 lg:w-2/5 md:w-3/5 lg:max-w-2/5 w-full'>
                     <h2 className='text-black text-4xl mb-8 font-semibold'>
                         Sign in
