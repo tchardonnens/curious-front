@@ -13,8 +13,9 @@ export default function Home() {
   const [resources, setResources] = useState<Resources[]>()
   const [loading, setLoading] = useState(false)
   const [history, setHistory] = useState<SidebarProps[]>([])
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const API_BASE_URL = process.env.API_BASE_URL;
 
   const handleTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPrompt(event.target.value);
@@ -29,7 +30,8 @@ export default function Home() {
     console.log(prompt)
     setLoading(true)
     console.log('fetching...')
-    const res = await fetch('https://api.verycurious.xyz/curious', {
+
+    const res = await fetch(`${API_BASE_URL}/curious`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
