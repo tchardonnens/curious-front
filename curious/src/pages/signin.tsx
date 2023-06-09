@@ -10,7 +10,7 @@ import toast, { Toaster } from 'react-hot-toast';
 const Auth = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_NEXT_PUBLIC_API_BASE_URL;
+    const API_BASE_URL = process.env.NEXT_PUBLIC_NEXT_PUBLIC_API_BASE_URL;
     const router = useRouter();
 
     const toasterLogin = () => {
@@ -25,7 +25,7 @@ const Auth = () => {
     }
 
     const loginForAccessToken = async (username: string, password: string) => {
-        const response = await fetch(`${NEXT_PUBLIC_API_BASE_URL}/token`, {
+        const response = await fetch(`${API_BASE_URL}/token`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'

@@ -15,7 +15,7 @@ export default function Home() {
   const [history, setHistory] = useState<SidebarProps[]>([])
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   const handleTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPrompt(event.target.value);
@@ -31,7 +31,7 @@ export default function Home() {
     setLoading(true)
     console.log('fetching...')
 
-    const res = await fetch(`${NEXT_PUBLIC_API_BASE_URL}/curious`, {
+    const res = await fetch(`${API_BASE_URL}/curious`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
