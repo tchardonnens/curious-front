@@ -13,7 +13,7 @@ const Auth = () => {
     const [full_name, setName] = useState('');
     const [password, setPassword] = useState('');
 
-    const API_BASE_URL = process.env.API_BASE_URL;
+    const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
     const toasterRegister = () => {
         toast.promise(
@@ -28,7 +28,7 @@ const Auth = () => {
 
     const register = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/users`, {
+            const response = await fetch(`${NEXT_PUBLIC_API_BASE_URL}/users`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
