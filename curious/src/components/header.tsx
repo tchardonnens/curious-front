@@ -50,9 +50,11 @@ export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: Header
           </Link>
           <div className="indicator absolute z-0 bottom-1/6 top-1/6 h-5/6 w-5/12 bg-white dark:bg-dark rounded-full transform transition-all duration-300 ease-in-out" ref={indicatorRef}></div>
         </div>
-        <Link href="/profile" className='h-10 w-10 border-2 border-black dark:border-darkGrey rounded-full overflow-hidden cursor-pointer hidden md:block' title='Profile'>
-          <img className='w-full height-full' src="https://pyxis.nymag.com/v1/imgs/d6a/dc7/4a5001b7beea096457f480c8808572428b-09-roll-safe.rsquare.w700.jpg" alt="User" />
-        </Link>
+        <div className='w-auto md:w-[212px] hidden md:block px-1'>
+          <Link href="/profile" className='h-10 w-10 ml-auto border-2 border-black dark:border-darkGrey rounded-full overflow-hidden cursor-pointer hidden md:block' title='Profile'>
+            <img className='w-full height-full' src="https://pyxis.nymag.com/v1/imgs/d6a/dc7/4a5001b7beea096457f480c8808572428b-09-roll-safe.rsquare.w700.jpg" alt="User" />
+          </Link>
+        </div>
       </>
     );
   } else if (router.pathname === '/profile') {
@@ -102,7 +104,7 @@ export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: Header
       <div className='flex flex-row items-center'>
         {sidebarBtn}
         <Link href="/" title='Homepage'>
-          <h1 className="sm:text-2xl md:text-4xl text-2xl font-bold ml-2 tracking-tight">Curious ⚡️</h1>
+          <h1 className="text-2xl md:text-4xl font-bold ml-2 tracking-tight">Curious ⚡️</h1>
         </Link>
       </div>
       {headerContent}
