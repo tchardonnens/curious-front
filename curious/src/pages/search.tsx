@@ -7,6 +7,7 @@ import Sidebar from '@/components/sidebar';
 import { Resources, SidebarProps } from '@/types/props';
 
 import { FiSend } from 'react-icons/fi';
+import Empty from '@/components/empty';
 
 export default function Home() {
   const [prompt, setPrompt] = useState('')
@@ -56,6 +57,9 @@ export default function Home() {
 
         <main className="bg-lightGrey dark:bg-anthracite flex w-full flex-col items-center justify-center text-center">
           <div className="w-full h-full flex flex-col items-center justify-start px-4 sm:px-10 pt-4 pb-8 sm:py-10 overflow-scroll">
+            {(!resources && !loading) && 
+              <Empty />
+            }
             {(resources || loading) && <div className="max-w-xl w-full mt-2">
               <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-5 text-dark dark:text-white">
                 Understand the subject 💡
@@ -124,7 +128,7 @@ export default function Home() {
                   setPrompt(e.target.value);
                   handleTextareaChange(e);
                 }} />
-              <button className='py-1 px-2 rounded-md hover:bg-lightGrey hover:dark:bg-darkerGrey' onClick={fetchResources} type="button" title='Send' >
+              <button className='py-1 px-2 rounded-md hover:bg-grey hover:dark:bg-darkerGrey transition' onClick={fetchResources} type="button" title='Send' >
                 <FiSend className='shrink-0 grow-0 text-black dark:text-darkGrey' />
               </button>
             </div>

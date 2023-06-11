@@ -32,7 +32,7 @@ html, body {
 }
 
 body.dark {
-  background: #1d1d1f;
+  background: #121212;
 }
 
 body.dark:has(#home),
