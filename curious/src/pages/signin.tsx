@@ -10,7 +10,7 @@ import toast, { Toaster } from 'react-hot-toast';
 const Auth = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const API_BASE_URL = process.env.NEXT_PUBLIC_NEXT_PUBLIC_API_BASE_URL;
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
     const router = useRouter();
 
     const toasterLogin = () => {
