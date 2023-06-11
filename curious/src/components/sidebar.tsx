@@ -33,14 +33,14 @@ export default function Sidebar({ isSidebarOpen, isSidebarVisible, ...props }: S
       <div className="px-4 flex flex-col gap-2 justify-between narrow-sidebar w-full h-full lg:flex-shrink-0 lg:overflow-y-auto">
         <div className="py-4 flex flex-col gap-2">
 
-          <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey md:hover:bg-grey dark:hover:bg-darkerGrey border-2 border-darkerGrey dark:border-darkGrey transition-colors flex flex-row gap-4 items-center justify-start">
+          <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey border-2 border-darkerGrey dark:border-darkGrey transition-colors flex flex-row gap-4 items-center justify-start">
             <FiPlus className='shrink-0 grow-0' />
             <span className="truncate">New search</span>
           </button>
 
           <div className='flex flex-col'>
 
-            <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey md:hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
+            <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
               <FiSearch className='shrink-0 grow-0' />
               <span className="truncate">Rocket Launcher Tutorials</span>
             </button>
@@ -51,17 +51,17 @@ export default function Sidebar({ isSidebarOpen, isSidebarVisible, ...props }: S
 
         <div className="py-4 border-t border-solid border-darkGrey">
 
-          <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey md:hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
+          <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
             <FiTrash className='shrink-0 grow-0' />
             <span className="truncate">Clear searches</span>
           </button>
 
-          <button onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey md:hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
+          <button onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
             {toggleIcon}
             <span className="truncate">{toggleText}</span>
           </button>
 
-          <button onClick={() => router.push('/profile')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey md:hover:bg-grey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start md:hidden">
+          <button onClick={() => router.push('/profile')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start md:hidden">
             <AiOutlineUser className='shrink-0 grow-0' />
             <span className="truncate">My Account</span>
           </button>
