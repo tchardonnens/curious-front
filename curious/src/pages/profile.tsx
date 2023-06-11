@@ -31,9 +31,9 @@ const Profile: React.FC<ProfileProps> = ({
 
       <div className="flex flex-row w-full h-full overflow-hidden">
 
-      <Sidebar history={history} isSidebarOpen={isSidebarOpen} isSidebarVisible={isSidebarVisible}></Sidebar>
-
-        <main className="bg-white dark:bg-anthracite p-10 flex w-full flex-col overflow-hidden">
+        <Sidebar history={history} isSidebarOpen={isSidebarOpen} isSidebarVisible={isSidebarVisible} />
+        
+        <main className="bg-lightGrey dark:bg-anthracite p-10 flex w-full flex-col overflow-hidden">
           <div className="flex items-center relative">
 
             <div className="w-full h-40">

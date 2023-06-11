@@ -26,18 +26,18 @@ export default function Post(props: PostProps) {
           <h2 className="text-2xl text-black dark:text-white">{username}</h2>
         </div>
 
-        <div className='text-darkerGrey dark:text-white p-4 mb-3'>
-          <h3>Searched for prompt: <b>{prompt}</b></h3>
+        <div className='text-neutral-600 dark:text-neutral-400 p-4 mb-3'>
+          <h3>Searched for prompt: <span className='font-medium text-black dark:text-white'>{prompt}</span></h3>
           
-          <div className='text-darkGrey dark:text-neutral-400 p-4'>
+          <div className='text-neutral-600 dark:text-neutral-400 p-4'>
             Monday 12:00 PM
           </div>
         </div>
 
         <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6'>
-          <Card title={"Neo-brutalism"} description={"GGWP"} image={"https://fffuel.co/images/dddepth/dddepth-159.jpg"} url={"https://twitter.com/borab0302"} key={0} />
-          <Card title={"User Experience"} description={"GGWP"} image={"https://fffuel.co/images/dddepth/dddepth-155.jpg"} url={"https://twitter.com/ChardonnensT"} key={1} />
-          <Card title={"Website Anatomy"} description={"GGWP"} image={"https://fffuel.co/images/dddepth/dddepth-125.jpg"} url={"https://twitter.com/elonmusk"} key={2} />
+          <Card title={"Neo-brutalism"} description={"Neo-Brutalism refers to a contemporary architectural style and design movement that draws inspiration from the original Brutalist architecture of the mid-20th century. The term Brutalism itself comes from the French word béton brut, meaning raw concrete, which characterizes the predominant material used in these architectural designs."} image={"https://fffuel.co/images/dddepth/dddepth-159.jpg"} url={"https://twitter.com/borab0302"} key={0} />
+          <Card title={"User Experience"} description={"User Experience (UX) refers to the overall experience and interaction a person has with a product, system, or service, particularly in terms of how it meets their needs and expectations. It encompasses all aspects of the user's interaction, including their perceptions, emotions, behaviors, and satisfaction."} image={"https://fffuel.co/images/dddepth/dddepth-155.jpg"} url={"https://twitter.com/ChardonnensT"} key={1} />
+          <Card title={"Website Anatomy"} description={"Website anatomy refers to the structure and components that make up a website. It refers to the various elements and sections that work together to create a functional and cohesive user experience. Understanding website anatomy is crucial for web designers, developers, and users to navigate and interact effectively with a website."} image={"https://fffuel.co/images/dddepth/dddepth-125.jpg"} url={"https://twitter.com/elonmusk"} key={2} />
         </div>
       </div>
       <hr />

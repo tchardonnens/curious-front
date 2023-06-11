@@ -29,7 +29,7 @@ export default function Sidebar({ isSidebarOpen, isSidebarVisible, ...props }: S
   const toggleText = colorMode === 'light' ? 'Dark Mode' : 'Light Mode';
   return (
 
-    <div className={`w-full shrink-0 md:${isSidebarVisible ? 'w-272' : 'hidden'} ${isSidebarOpen ? 'flex' : 'hidden'} relative z-9 md:static md:z-0 md:flex bg-white dark:bg-dark md:bg-lightGrey`}>
+    <div className={`w-full shrink-0 ${isSidebarOpen ? 'flex' : 'hidden'} md:${isSidebarVisible ? 'flex' : 'hidden'} md:w-[272px] relative z-9 md:static md:z-0 bg-white dark:bg-dark`}>
       <div className="px-4 flex flex-col gap-2 justify-between narrow-sidebar w-full h-full lg:flex-shrink-0 lg:overflow-y-auto">
         <div className="py-4 flex flex-col gap-2">
 

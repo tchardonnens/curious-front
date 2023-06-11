@@ -16,9 +16,14 @@ module.exports = {
           '0%': { 'background-position': '200% 0' },
           '100%': { 'background-position': '-200% 0' },
         },
+        shine: {
+          "20%": { left: "125%" },
+          "100%": { left: "125%" },
+        },
       },
       animation: {
         'loading-skeleton': 'loading-skeleton 1.5s infinite',
+        shine: "shine 10s infinite",
       },
       gridTemplateColumns: {
         sidebar: "300px auto",
@@ -34,14 +39,14 @@ module.exports = {
         darkerGrey: '#3b3b3f', // light mode sidebar texts
         darkGrey: '#b8b7b7', // dark mode sidebar texts and whole search bar, light mode search bar text
         grey: '#dcdcdc', // light mode header and sidebar borders 
-        lightGrey: '#f1f1f1', // sidebar background light mode
+        lightGrey: 'rgb(243 244 246)', // sidebar background light mode
         white: '#ffffff', // main light mode backgrounds
         placeholder: '#a9a9a9', //placeholder color for index typing animation
-      },
-      width: {
-        '272': '272px',
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }

@@ -68,7 +68,7 @@ export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: Header
             Feed
           </Link>
         </div>
-        <div className='w-10 h-10 hidden md:block'></div>
+        <div className='w-auto md:w-[212px] h-10 hidden md:block'></div>
       </>
     );
   } else if (router.pathname === '/') {
@@ -100,7 +100,7 @@ export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: Header
   }
 
   return (
-    <header className={`bg-white ${['/search', '/feed', '/profile'].includes(router.pathname) ? 'dark:bg-dark dark:text-white dark:border-dark' : ''} text-black flex justify-between items-center w-full p-5 border-b-2 border-lightGrey pb-7 px-4`}>
+    <header className={`bg-white ${['/search', '/feed', '/profile'].includes(router.pathname) ? 'dark:bg-dark dark:text-white' : 'border-b-2 border-lightGrey'} text-black flex justify-between items-center w-full p-5 pb-7 px-4`}>
       <div className='flex flex-row items-center'>
         {sidebarBtn}
         <Link href="/" title='Homepage'>
