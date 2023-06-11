@@ -9,9 +9,10 @@ import { Dispatch, SetStateAction } from 'react';
 
 interface HeaderProps {
   setIsSidebarOpen?: Dispatch<SetStateAction<boolean>>;
+  setIsSidebarVisible?: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Header({ setIsSidebarOpen }: HeaderProps) {
+export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: HeaderProps) {
   const router = useRouter();
   let headerContent;
   let sidebarBtn;
@@ -49,9 +50,11 @@ export default function Header({ setIsSidebarOpen }: HeaderProps) {
           </Link>
           <div className="indicator absolute z-0 bottom-1/6 top-1/6 h-5/6 w-5/12 bg-white dark:bg-dark rounded-full transform transition-all duration-300 ease-in-out" ref={indicatorRef}></div>
         </div>
-        <Link href="/profile" className='h-10 w-10 border-2 border-black dark:border-darkGrey rounded-full overflow-hidden cursor-pointer hidden md:block' title='Profile'>
-          <img className='w-full height-full' src="https://pyxis.nymag.com/v1/imgs/d6a/dc7/4a5001b7beea096457f480c8808572428b-09-roll-safe.rsquare.w700.jpg" alt="User" />
-        </Link>
+        <div className='w-auto md:w-[212px] hidden md:block px-1'>
+          <Link href="/profile" className='h-10 w-10 ml-auto border-2 border-black dark:border-darkGrey rounded-full overflow-hidden cursor-pointer hidden md:block' title='Profile'>
+            <img className='w-full height-full' src="https://pyxis.nymag.com/v1/imgs/d6a/dc7/4a5001b7beea096457f480c8808572428b-09-roll-safe.rsquare.w700.jpg" alt="User" />
+          </Link>
+        </div>
       </>
     );
   } else if (router.pathname === '/profile') {
@@ -65,7 +68,7 @@ export default function Header({ setIsSidebarOpen }: HeaderProps) {
             Feed
           </Link>
         </div>
-        <div className='w-10 h-10 hidden md:block'></div>
+        <div className='w-auto md:w-[212px] h-10 hidden md:block'></div>
       </>
     );
   } else if (router.pathname === '/') {
@@ -84,18 +87,24 @@ export default function Header({ setIsSidebarOpen }: HeaderProps) {
   }
   if (router.pathname === '/feed' || router.pathname === '/search' || router.pathname === '/profile') {
     sidebarBtn = (
-      <button onClick={() => setIsSidebarOpen?.(prev => !prev)} className='flex md:hidden hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
-        <HiBars3 className='shrink-0 grow-0' size={30} />
-      </button>
+      <div>
+        <button onClick={() => setIsSidebarOpen?.(prev => !prev)} className='flex md:hidden hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
+          <HiBars3 className='shrink-0 grow-0' size={30} />
+        </button>
+        <button onClick={() => setIsSidebarVisible?.(prev => !prev)} className='hidden md:flex hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
+          <HiBars3 className='shrink-0 grow-0' size={30} />
+        </button>
+      </div>
+      
     );
   }
 
   return (
-    <header className={`bg-white ${['/search', '/feed', '/profile'].includes(router.pathname) ? 'dark:bg-dark dark:text-white dark:border-dark' : ''} text-black flex justify-between items-center w-full p-5 border-b-2 border-lightGrey pb-7 px-4`}>
+    <header className={`bg-white ${['/search', '/feed', '/profile'].includes(router.pathname) ? 'dark:bg-dark dark:text-white' : 'border-b-2 border-lightGrey'} text-black flex justify-between items-center w-full p-5 pb-7 px-4`}>
       <div className='flex flex-row items-center'>
         {sidebarBtn}
         <Link href="/" title='Homepage'>
-          <h1 className="sm:text-2xl md:text-4xl text-2xl font-bold ml-2 tracking-tight">Curious ⚡️</h1>
+          <h1 className="text-2xl md:text-4xl font-bold ml-2 tracking-tight">Curious ⚡️</h1>
         </Link>
       </div>
       {headerContent}

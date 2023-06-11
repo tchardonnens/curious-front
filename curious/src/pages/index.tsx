@@ -23,7 +23,13 @@ export default function Home() {
             <span>{text}</span>
             <Cursor />
           </div>
-          <button className="w-full bg-black text-white rounded-md p-2" disabled>Get content!</button>
+          <button className="w-full bg-black text-white rounded-md p-2 group relative" disabled>
+            Get content!
+            {/* To change text content on hover */}
+            {/* <span className='group-hover:hidden'>Get content!</span>
+            <span className="hidden group-hover:inline">Sign in!</span> */}
+            <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-40 animate-shine" />
+          </button>
         
         </div>
         
