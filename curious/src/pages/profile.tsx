@@ -22,15 +22,16 @@ const Profile: React.FC<ProfileProps> = ({
 }) => {
   const [history, setHistory] = useState<SidebarProps[]>([])
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
   return (
     <>
       <PageHead />
-      <Header setIsSidebarOpen={setIsSidebarOpen} />
+      <Header setIsSidebarOpen={setIsSidebarOpen} setIsSidebarVisible={setIsSidebarVisible} />
 
       <div className="flex flex-row w-full h-full overflow-hidden">
 
-        <Sidebar history={history} isSidebarOpen={isSidebarOpen} />
+      <Sidebar history={history} isSidebarOpen={isSidebarOpen} isSidebarVisible={isSidebarVisible}></Sidebar>
 
         <main className="bg-white dark:bg-anthracite p-10 flex w-full flex-col overflow-hidden">
           <div className="flex items-center relative">

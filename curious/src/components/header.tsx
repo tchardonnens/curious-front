@@ -9,9 +9,10 @@ import { Dispatch, SetStateAction } from 'react';
 
 interface HeaderProps {
   setIsSidebarOpen?: Dispatch<SetStateAction<boolean>>;
+  setIsSidebarVisible?: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Header({ setIsSidebarOpen }: HeaderProps) {
+export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: HeaderProps) {
   const router = useRouter();
   let headerContent;
   let sidebarBtn;
@@ -84,9 +85,15 @@ export default function Header({ setIsSidebarOpen }: HeaderProps) {
   }
   if (router.pathname === '/feed' || router.pathname === '/search' || router.pathname === '/profile') {
     sidebarBtn = (
-      <button onClick={() => setIsSidebarOpen?.(prev => !prev)} className='flex md:hidden hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
-        <HiBars3 className='shrink-0 grow-0' size={30} />
-      </button>
+      <div>
+        <button onClick={() => setIsSidebarOpen?.(prev => !prev)} className='flex md:hidden hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
+          <HiBars3 className='shrink-0 grow-0' size={30} />
+        </button>
+        <button onClick={() => setIsSidebarVisible?.(prev => !prev)} className='hidden md:flex hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
+          <HiBars3 className='shrink-0 grow-0' size={30} />
+        </button>
+      </div>
+      
     );
   }
 
