@@ -25,7 +25,7 @@ const Auth = () => {
     }
 
     const loginForAccessToken = async (username: string, password: string) => {
-        const response = await fetch(`${API_BASE_URL}/token`, {
+        const response = await fetch(`https://api.verycurious.xyz/token`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
