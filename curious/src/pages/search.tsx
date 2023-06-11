@@ -33,7 +33,7 @@ export default function Home() {
     setLoading(true)
     console.log('fetching...')
 
-    const res = await fetch(`${API_BASE_URL}/curious`, {
+    const res = await fetch(`https://api.verycurious.xyz/curious`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

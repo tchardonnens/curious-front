@@ -28,7 +28,7 @@ const Auth = () => {
 
     const register = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/users`, {
+            const response = await fetch(`https://api.verycurious.xyz/users`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
