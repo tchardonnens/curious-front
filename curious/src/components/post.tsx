@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from '@/components/card';
+import Image from 'next/image';
 
 type PostProps = {
   /*userPP : string;
@@ -22,7 +23,10 @@ export default function Post(props: PostProps) {
     <div className='w-full mb-8'>
       <div className='flex flex-col justify-start w-full rounded-lg md:p-6 mb-3'>
 
-        <div className='flex flex-col'>
+        <div className='flex flex-col items-center justify-center gap-2'>
+          <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-darkGrey dark:border-white">
+            <Image src="/PP-test.png" alt="Avatar" width={200} height={200} className="w-full h-full object-cover" />
+          </div>
           <h2 className="text-2xl text-black dark:text-white">{username}</h2>
         </div>
 

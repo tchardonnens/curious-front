@@ -5,6 +5,7 @@ import PageHead from '@/components/head';
 import Header from '@/components/header';
 import Sidebar from '@/components/sidebar';
 import { Resources, SidebarProps } from '@/types/props';
+import Empty from '@/components/empty';
 
 export default function Home() {
   const [prompt, setPrompt] = useState('')
@@ -33,6 +34,9 @@ export default function Home() {
             </div>}
             <Post />
             {loading && <LoadingSkeleton />}
+            {/* {(!resources && !loading) && 
+              <Empty />
+            } */}
           </div>
         </main>
       </div>
