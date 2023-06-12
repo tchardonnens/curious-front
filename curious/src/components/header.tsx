@@ -50,7 +50,7 @@ export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: Header
           <Link href="/feed" className={`text-center w-16 relative z-10`} title='Feed' ref={feedRef}>
             Feed
           </Link>
-          <div className="indicator absolute z-0 bottom-1/6 top-1/6 h-5/6 w-5/12 bg-white dark:bg-dark rounded-full transform transition-all duration-300 ease-in-out" ref={indicatorRef}></div>
+          <div className="indicator absolute z-0 bottom-1/6 top-1/6 h-5/6 w-5/12 bg-white dark:bg-dark rounded-full transform transition-transform duration-300 ease-in-out" ref={indicatorRef}></div>
         </div>
 
         <div className='md:w-[212px] hidden md:flex px-1 justify-end'>
