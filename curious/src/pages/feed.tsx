@@ -7,15 +7,36 @@ import Sidebar from '@/components/sidebar';
 import { Resources, SidebarProps } from '@/types/props';
 import Empty from '@/components/empty';
 
+interface PromptContent {
+  title: string;
+  snippet: string;
+  link: string;
+  source: string;
+  long_description: string;
+  image: string;
+  id: number;
+  is_active: boolean;
+}
+
+interface PostData {
+  prompt: {
+    title: string;
+    user_id: number;
+    id: number;
+    created_at: string;
+  };
+  subject: string;
+  contents: PromptContent[];
+}
+
 export default function Home() {
-  const [prompt, setPrompt] = useState('')
   const [resources, setResources] = useState<Resources>()
   const [loading, setLoading] = useState(false)
   const [history, setHistory] = useState<SidebarProps[]>([])
   const [username, setUsername] = useState('');
   const [userPP, setUserPP] = useState('');
-  const [userURL, setUserURL] = useState('');
-  const [prompts, setPrompts] = useState([]);
+  const [prompts, setPrompts] = useState<PostData[]>([]);
+
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -30,7 +51,7 @@ export default function Home() {
     const token = localStorage.getItem('authToken');
 
     try {
-      const response = await fetch(`${API_BASE_URL}/prompts/me`, {
+      const response = await fetch(`${API_BASE_URL}/prompts/profile/me`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +88,18 @@ export default function Home() {
                 My feed 😀
               </h2>
             </div>}
-            <Post username={username} userPP={userPP} userURL={userURL} prompts={prompts} />
+            {prompts.sort((a, b) => new Date(b.prompt.created_at).getTime() - new Date(a.prompt.created_at).getTime()).map((post: any, index: any) => (
+              <Post
+                key={index}
+                post={post}
+                username={username}
+                userPP={userPP}
+                removeUserInfo="hidden"
+                removeDatePadding="px-0"
+                promptDetailPadding="px-0"
+                removePostMargin="mb-0"
+              />
+            ))}
             {loading && <LoadingSkeleton />}
             {/* {(!resources && !loading) && 
               <Empty />
