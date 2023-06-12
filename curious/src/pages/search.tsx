@@ -144,14 +144,7 @@ export default function Home() {
                 </div>
               )
             })}
-
-            {(resources || loading) && <div className="max-w-xl w-full mt-10">
-              <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-10 text-dark dark:text-white">
-                Want more? 🚀
-              </h2>
-            </div>
-            }
-            {loading && <LoadingSkeleton />}
+            
           </div>
 
           <form className="max-w-xl w-full px-4 sm:px-10 pb-4 sm:pb-10 relative z-9 bg-transparent" onSubmit={(e) => { e.preventDefault(); fetchResources(); }}>
