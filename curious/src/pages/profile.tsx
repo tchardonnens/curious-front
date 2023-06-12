@@ -16,8 +16,8 @@ const Profile = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
   const [full_name, setFullName] = useState('');
   const [username, setUsername] = useState('');
-  const [userPP, getUserPP] = useState('');
-  const [userURL, getUserURL] = useState('');
+  const [userPP, setUserPP] = useState('');
+  const [userURL, setUserURL] = useState('');
   const [bio, setBio] = useState('');
   const [followers, setFollowers] = useState(0);
   const [following, setFollowing] = useState(0);
@@ -46,8 +46,8 @@ const Profile = () => {
       response.json().then((data) => {
         setFullName(data.full_name);
         setUsername(data.username);
-        getUserPP(data.userPP);
-        getUserURL(data.userURL);
+        setUserPP(data.userPP);
+        setUserURL(data.userURL);
         setBio(data.bio);
         setFollowers(data.followers);
         setFollowing(data.following);
