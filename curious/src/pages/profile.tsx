@@ -28,6 +28,7 @@ const Profile = () => {
 
   useEffect(() => {
     getProfile();
+    getPrompts();
   }, []);
 
   const getProfile = async () => {
@@ -50,6 +51,31 @@ const Profile = () => {
       });
     } catch (error) {
       console.error('An error occurred while registering:', error);
+      throw error;
+    }
+  };
+
+  const getPrompts = async () => {
+    const token = localStorage.getItem('authToken');
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/prompts/me`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      response.json().then((data) => {
+        console.log(data);
+        setHistory(data);
+      });
+    } catch (error) {
+      console.error('An error occurred while getting prompts:', error);
       throw error;
     }
   };

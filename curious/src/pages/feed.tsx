@@ -1,6 +1,6 @@
 import Post from '@/components/post';
 import LoadingSkeleton from '@/components/loadingSkeleton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PageHead from '@/components/head';
 import Header from '@/components/header';
 import Sidebar from '@/components/sidebar';
@@ -15,6 +15,37 @@ export default function Home() {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+  useEffect(() => {
+    getPrompts();
+  }, []);
+
+  const getPrompts = async () => {
+    const token = localStorage.getItem('authToken');
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/prompts/me`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      response.json().then((data) => {
+        console.log(data);
+        setHistory(data);
+      });
+    } catch (error) {
+      console.error('An error occurred while getting prompts:', error);
+      throw error;
+    }
+  };
 
   return (
     <>
