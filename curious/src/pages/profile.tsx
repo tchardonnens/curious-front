@@ -1,5 +1,6 @@
 import PageHead from "@/components/head";
 import Header from "@/components/header";
+import ProfilePic from "@/components/profilePic";
 import Sidebar from "@/components/sidebar";
 import { Resources, SidebarProps } from '@/types/props';
 import Image from "next/image";
@@ -69,9 +70,7 @@ const Profile = () => {
               <Image src="/sf-dream.png" alt="Avatar" width={500} height={200} className="w-full h-full object-cover rounded-t-xl" />
             </div>
 
-            <div className="w-24 h-24 rounded-full overflow-hidden absolute bottom-0 left-6 translate-y-12">
-              <Image src="/PP-test.png" alt="Avatar" width={200} height={200} className="w-full h-full object-cover" />
-            </div>
+            <ProfilePic src="/PP-test.png" alt="Avatar" addClass='w-24 h-24 absolute bottom-0 left-6 translate-y-12 border-none' />
 
           </div>
 
