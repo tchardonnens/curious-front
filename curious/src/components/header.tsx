@@ -6,6 +6,8 @@ import { useEffect, useRef } from 'react';
 import { HiBars3 } from 'react-icons/hi2';
 
 import { Dispatch, SetStateAction } from 'react';
+import Image from 'next/image';
+import ProfilePic from './profilePic';
 
 interface HeaderProps {
   setIsSidebarOpen?: Dispatch<SetStateAction<boolean>>;
@@ -50,9 +52,10 @@ export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: Header
           </Link>
           <div className="indicator absolute z-0 bottom-1/6 top-1/6 h-5/6 w-5/12 bg-white dark:bg-dark rounded-full transform transition-all duration-300 ease-in-out" ref={indicatorRef}></div>
         </div>
-        <div className='w-auto md:w-[212px] hidden md:block px-1'>
-          <Link href="/profile" className='h-10 w-10 ml-auto border-2 border-black dark:border-darkGrey rounded-full overflow-hidden cursor-pointer hidden md:block' title='Profile'>
-            <img className='w-full height-full' src="/PP-test.png" alt="User" />
+        
+        <div className='md:w-[212px] hidden md:flex px-1 justify-end'>
+          <Link href="/profile" title='Profile'>
+            <ProfilePic src="/PP-test.png" alt="User" addClass='hidden md:block' />
           </Link>
         </div>
       </>
@@ -88,10 +91,10 @@ export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: Header
   if (router.pathname === '/feed' || router.pathname === '/search' || router.pathname === '/profile') {
     sidebarBtn = (
       <div>
-        <button onClick={() => setIsSidebarOpen?.(prev => !prev)} className='flex md:hidden hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
+        <button onClick={() => setIsSidebarOpen?.(prev => !prev)} className='flex md:hidden hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1' title='Menu'>
           <HiBars3 className='shrink-0 grow-0' size={30} />
         </button>
-        <button onClick={() => setIsSidebarVisible?.(prev => !prev)} className='hidden md:flex hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1'>
+        <button onClick={() => setIsSidebarVisible?.(prev => !prev)} className='hidden md:flex hover:bg-lightGrey hover:dark:bg-darkerGrey rounded-md p-1' title='Menu'>
           <HiBars3 className='shrink-0 grow-0' size={30} />
         </button>
       </div>
