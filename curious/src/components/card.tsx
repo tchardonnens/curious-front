@@ -21,9 +21,9 @@ export default function Card(props: CardProps) {
       
       <div className="flex flex-col items-start justify-center pt-4 w-full text-left">
         <div className='flex flex-row gap-2 items-center'>
-          <FaYoutube size={25} className={`block text-black dark:text-white ${props.displayTwitterIcon}`} />
+          <FaYoutube size={25} className={`block text-black dark:text-white ${props.displayYoutubeIcon}`} />
           <FaRedditAlien size={25} className={`block text-black dark:text-white ${props.displayRedditIcon}`} />
-          <FaTwitter size={25} className={`block text-black dark:text-white ${props.displayYoutubeIcon}`} />
+          <FaTwitter size={25} className={`block text-black dark:text-white ${props.displayTwitterIcon}`} />
           <h3 className="text-black dark:text-white font-medium text-xl w-full truncate">{props.title}</h3>
         </div>
         <div className='w-full h-[60px]'>
