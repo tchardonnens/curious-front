@@ -10,9 +10,10 @@ import { useRouter } from 'next/router';
 interface SidebarProps extends SidebarPropsList {
   isSidebarOpen: boolean;
   isSidebarVisible: boolean;
+  history: any
 }
 
-export default function Sidebar({ isSidebarOpen, isSidebarVisible, ...props }: SidebarProps) {
+export default function Sidebar({ history, isSidebarOpen, isSidebarVisible }: SidebarProps) {
   const router = useRouter();
   const [isMounted, setIsMounted] = useState(false);
   const [colorMode, setColorMode] = useColorMode();
@@ -38,17 +39,15 @@ export default function Sidebar({ isSidebarOpen, isSidebarVisible, ...props }: S
               <span className="truncate">New search</span>
             </button>
 
-            <div className='flex flex-col'>
-
-              <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                <FiSearch className='shrink-0 grow-0' />
-                <span className="truncate">Rocket Launcher Tutorials</span>
-              </button>
-
-            </div>
-
+            {history.map((item: any, index: any) => {
+              return (
+                <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index}>
+                  <FiSearch className='shrink-0 grow-0' />
+                  <span className="truncate">{item.title}</span>
+                </button>
+              );
+            })}
           </div>
-
           <div className="py-4 border-t border-solid border-darkGrey">
 
             <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
@@ -67,18 +66,6 @@ export default function Sidebar({ isSidebarOpen, isSidebarVisible, ...props }: S
             </button>
 
           </div>
-
-
-          {/* {props.history.map((item) => {
-              return (
-                <div className="flex flex-col items-center justify-center text-center px-4 mt-12 sm:mt-20">
-                  <h1 className="text-2xl font-bold text-white">{item.header}</h1>
-                  <p className="text-white">{item.description}</p>
-                </div>
-              );
-            })} */}
-
-
         </div>
       )}
     </div>

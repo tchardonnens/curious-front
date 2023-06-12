@@ -46,6 +46,16 @@ export type Prompt = {
 }
 
 export type Resources = {
-  prompt: Prompt;
+  subject: Prompt;
   content: AllSourcesCleanGoogleResult;
+}
+
+export type User = {
+  id: number;
+  username: string;
+  email: string;
+  full_name: string;
+  bio: string;
+  followings: number[];
+  followers: number[];
 }
