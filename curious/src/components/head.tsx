@@ -8,27 +8,27 @@ function PageHead() {
 
   if (router.pathname === '/') {
     title = 'Curious';
-    description = 'Welcome to Curious, the knowledge portal powered by ChatGPT';
+    description = "Welcome to Curious, the knowledge portal powered by ChatGPT";
 
   } else if (router.pathname === '/signin') {
     title = 'Sign In';
-    description = 'Sign in to Curious to access our knowledge portal powered by ChatGPT';
+    description = "Sign in to Curious to access our knowledge portal powered by ChatGPT";
 
   } else if (router.pathname === '/signup') {
     title = 'Sign Up';
-    description = 'Sign up to Curious to access our knowledge portal powered by ChatGPT';
+    description = "Sign up to Curious to access our knowledge portal powered by ChatGPT";
 
   } else if (router.pathname === '/search') {
     title = 'Search';
-    description = '';
+    description = "Unleash your curiosity with Curious Search and explore YouTube, Twitter, and Reddit like never before!";
   
   } else if (router.pathname === '/feed') {
     title = 'Feed';
-    description = '';
+    description = "Feed your curiosity on Curious! Follow your friends and explore what they've searched for, expanding your knowledge horizons.";
   
   } else if (router.pathname === '/profile') {
     title = 'Profile';
-    description = '';
+    description = "SShare your curiosity with the world. Unveil your interests, showcase your searches, and describe yourself within a vibrant community of knowledge enthusiasts.";
   }
 
 
