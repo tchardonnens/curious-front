@@ -12,6 +12,10 @@ export default function Home() {
   const [resources, setResources] = useState<Resources>()
   const [loading, setLoading] = useState(false)
   const [history, setHistory] = useState<SidebarProps[]>([])
+  const [username, setUsername] = useState('');
+  const [userPP, setUserPP] = useState('');
+  const [userURL, setUserURL] = useState('');
+  const [prompts, setPrompts] = useState([]);
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -39,7 +43,7 @@ export default function Home() {
       }
       response.json().then((data) => {
         console.log(data);
-        setHistory(data);
+        setPrompts(data);
       });
     } catch (error) {
       console.error('An error occurred while getting prompts:', error);
@@ -63,7 +67,7 @@ export default function Home() {
                 My feed 😀
               </h2>
             </div>}
-            <Post />
+            <Post username={username} userPP={userPP} userURL={userURL} prompts={prompts} />
             {loading && <LoadingSkeleton />}
             {/* {(!resources && !loading) && 
               <Empty />
