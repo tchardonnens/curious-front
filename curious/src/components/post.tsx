@@ -54,7 +54,7 @@ const Post: React.FC<PostProps> = ({
               <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6'>
                 {item.contents.map((item: any, index: any) => {
                   return (
-                    <Card title={item.title} description={item.description} image={item.image} url={item.link} key={index} />
+                    <Card title={item.title} description={item.description} image={item.image} url={item.link} source={item.source} key={index} />
                   );
                 })}
               </div>

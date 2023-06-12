@@ -6,6 +6,7 @@ type CardProps = {
   description: string;
   image: string;
   url: string;
+  source?: string;
   displayYoutubeIcon?: string;
   displayRedditIcon?: string;
   displayTwitterIcon?: string;
