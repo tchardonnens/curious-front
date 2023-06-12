@@ -44,33 +44,32 @@ export default function Home() {
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   useEffect(() => {
-    getPrompts();
-  }, []);
+    const getPrompts = async () => {
+      const token = localStorage.getItem('authToken');
 
-  const getPrompts = async () => {
-    const token = localStorage.getItem('authToken');
+      try {
+        const response = await fetch(`${API_BASE_URL}/prompts/profile/me`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+        });
 
-    try {
-      const response = await fetch(`${API_BASE_URL}/prompts/profile/me`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        response.json().then((data) => {
+          console.log(data);
+          setPrompts(data);
+        });
+      } catch (error) {
+        console.error('An error occurred while getting prompts:', error);
+        throw error;
       }
-      response.json().then((data) => {
-        console.log(data);
-        setPrompts(data);
-      });
-    } catch (error) {
-      console.error('An error occurred while getting prompts:', error);
-      throw error;
-    }
-  };
+    };
+    getPrompts();
+  }, [API_BASE_URL, prompts]);
 
   return (
     <>
