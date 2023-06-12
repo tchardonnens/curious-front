@@ -1,5 +1,6 @@
 import PageHead from "@/components/head";
 import Header from "@/components/header";
+import Post from "@/components/post";
 import ProfilePic from "@/components/profilePic";
 import Sidebar from "@/components/sidebar";
 import { Resources, SidebarProps } from '@/types/props';
@@ -63,7 +64,7 @@ const Profile = () => {
 
         <Sidebar history={history} isSidebarOpen={isSidebarOpen} isSidebarVisible={isSidebarVisible} />
 
-        <main className="bg-lightGrey dark:bg-anthracite p-10 flex w-full flex-col overflow-hidden">
+        <main className="bg-lightGrey dark:bg-anthracite p-10 flex w-full flex-col overflow-x-hidden overflow-y-auto">
           <div className="flex items-center relative">
 
             <div className="w-full h-40">
@@ -74,7 +75,7 @@ const Profile = () => {
 
           </div>
 
-          <div className="flex flex-col space-y-4 w-full max-w-[580px] mt-10 px-4">
+          <div className="flex flex-col space-y-4 w-full max-w-[580px] my-10 px-4">
 
             <div className="flex flex-row gap-4 items-center pt-6">
               <div className="font-semibold text-lg text-black dark:text-white">
@@ -102,6 +103,8 @@ const Profile = () => {
               </div>
             </div>
           </div>
+
+          <Post removeUserInfo="hidden" removeDatePadding="px-0" promptDetailPadding="px-0" removePostMargin="mb-0" />
         </main>
       </div>
     </>
