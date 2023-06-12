@@ -52,10 +52,10 @@ export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: Header
           </Link>
           <div className="indicator absolute z-0 bottom-1/6 top-1/6 h-5/6 w-5/12 bg-white dark:bg-dark rounded-full transform transition-all duration-300 ease-in-out" ref={indicatorRef}></div>
         </div>
-        
+
         <div className='md:w-[212px] hidden md:flex px-1 justify-end'>
           <Link href="/profile" title='Profile'>
-            <ProfilePic src="/PP-test.png" alt="User" addClass='hidden md:block' />
+            <ProfilePic src="/PP-test.png" alt="User" addClass='h-10 w-10 hidden md:block' />
           </Link>
         </div>
       </>

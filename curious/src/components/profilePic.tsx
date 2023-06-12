@@ -12,7 +12,7 @@ const ProfilePic: React.FC<ProfilePicProps> = ({
     addClass
 }) => {
     return (
-        <div className={`h-10 w-10  border-2 border-black dark:border-white rounded-full overflow-hidden ${addClass}`}>
+        <div className={`border-2 border-black dark:border-white rounded-full overflow-hidden ${addClass}`}>
             <Image src={src} alt={alt} width={200} height={200} className="w-full h-full object-cover" />
         </div>
     );

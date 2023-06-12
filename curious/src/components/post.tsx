@@ -28,7 +28,7 @@ export default function Post(props: PostProps) {
           {/* <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-darkGrey dark:border-white">
             <Image src="/PP-test.png" alt="Avatar" width={200} height={200} className="w-full h-full object-cover" />
           </div> */}
-          <ProfilePic src="/PP-test.png" alt="Avatar" />
+          <ProfilePic src="/PP-test.png" alt="Avatar" addClass='h-10 w-10' />
           <h2 className="text-2xl text-black dark:text-white">{username}</h2>
         </div>
 
