@@ -93,10 +93,6 @@ export default function Home() {
                 post={post}
                 username={username}
                 userPP={userPP}
-                removeUserInfo="hidden"
-                removeDatePadding="px-0"
-                promptDetailPadding="px-0"
-                removePostMargin="mb-0"
               />
             ))}
             {loading && <LoadingSkeleton />}

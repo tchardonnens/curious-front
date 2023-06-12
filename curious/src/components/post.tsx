@@ -48,7 +48,7 @@ const Post: React.FC<PostProps> = ({
 
   return (
     <div className={`w-full mb-8 ${removePostMargin}`}>
-      <div className='flex flex-col justify-start w-full rounded-lg md:p-6 mb-3'>
+      <div className='flex flex-col justify-center w-full rounded-lg md:p-6 mb-3'>
         <div className={`flex flex-col items-center justify-center gap-2 ${removeUserInfo}`}>
           <ProfilePic src={userPP} alt="Avatar" addClass='h-10 w-10' />
           <h2 className="text-2xl text-black dark:text-white">{username}</h2>
