@@ -61,9 +61,9 @@ const Post: React.FC<PostProps> = ({
             </div>
             <hr />
           </div>
+
         );
       })}
-      
     </div>
   );
 }
