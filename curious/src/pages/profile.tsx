@@ -4,16 +4,9 @@ import Post from "@/components/post";
 import ProfilePic from "@/components/profilePic";
 import Sidebar from "@/components/sidebar";
 import { Resources, SidebarProps } from '@/types/props';
+import { time } from "console";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-
-interface ProfileProps {
-  name: string;
-  username: string;
-  bio: string;
-  followers: number;
-  following: number;
-}
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -23,9 +16,12 @@ const Profile = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
   const [full_name, setFullName] = useState('');
   const [username, setUsername] = useState('');
+  const [userPP, getUserPP] = useState('');
+  const [userURL, getUserURL] = useState('');
   const [bio, setBio] = useState('');
   const [followers, setFollowers] = useState(0);
   const [following, setFollowing] = useState(0);
+  const [prompts, setPrompts] = useState([])
 
   useEffect(() => {
     getProfile();
@@ -46,9 +42,15 @@ const Profile = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+
       response.json().then((data) => {
         setFullName(data.full_name);
         setUsername(data.username);
+        getUserPP(data.userPP);
+        getUserURL(data.userURL);
+        setBio(data.bio);
+        setFollowers(data.followers);
+        setFollowing(data.following);
       });
     } catch (error) {
       console.error('An error occurred while registering:', error);
@@ -60,7 +62,7 @@ const Profile = () => {
     const token = localStorage.getItem('authToken');
 
     try {
-      const response = await fetch(`${API_BASE_URL}/prompts/me`, {
+      const response = await fetch(`${API_BASE_URL}/prompts/profile/me`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -73,7 +75,7 @@ const Profile = () => {
       }
       response.json().then((data) => {
         console.log(data);
-        setHistory(data);
+        setPrompts(data);
       });
     } catch (error) {
       console.error('An error occurred while getting prompts:', error);
@@ -130,7 +132,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <Post removeUserInfo="hidden" removeDatePadding="px-0" promptDetailPadding="px-0" removePostMargin="mb-0" />
+          <Post username={username} userPP={userPP} userURL={userURL} prompts={prompts} removeUserInfo="hidden" removeDatePadding="px-0" promptDetailPadding="px-0" removePostMargin="mb-0" />
         </main>
       </div>
     </>
