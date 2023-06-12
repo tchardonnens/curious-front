@@ -101,9 +101,8 @@ export default function Home() {
             {resources && resources.map((resource, index) => {
               return (
                 <div key={index} className="flex flex-col items-center justify-center">
-                  <h2 className='text-3xl m-5 font-bold'>{resource.subject.title}</h2>
-                  <h3 className='text-2xl mb-5'>YouTube</h3>
-                  <div className='grid grid-cols-2 gap-6'>
+                  <h2 className='text-3xl my-4 font-semibold text-neutral-600 dark:text-neutral-400'>{resource.subject.title}</h2>
+                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-2'>
                     {resource.content.youtube.map((result, idx) => (
                       <Card
                         key={idx}
@@ -116,8 +115,7 @@ export default function Home() {
                       />
                     ))}
                   </div>
-                  <h3 className='text-2xl m-5'>Reddit</h3>
-                  <div className='grid grid-cols-2 gap-6'>
+                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-2'>
                     {resource.content.reddit.map((result, idx) => (
                       <Card
                         key={idx}
@@ -130,8 +128,7 @@ export default function Home() {
                       />
                     ))}
                   </div>
-                  <h3 className='text-2xl m-5'>Twitter</h3>
-                  <div className='grid grid-cols-2 gap-6'>
+                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-2'>
                     {resource.content.twitter.map((result, idx) => (
                       <Card
                         key={idx}
@@ -147,14 +144,7 @@ export default function Home() {
                 </div>
               )
             })}
-
-            {(resources || loading) && <div className="max-w-xl w-full mt-10">
-              <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-10 text-dark dark:text-white">
-                Want more? 🚀
-              </h2>
-            </div>
-            }
-            {loading && <LoadingSkeleton />}
+            
           </div>
 
           <form className="max-w-xl w-full px-4 sm:px-10 pb-4 sm:pb-10 relative z-9 bg-transparent" onSubmit={(e) => { e.preventDefault(); fetchResources(); }}>

@@ -10,6 +10,30 @@ import React, { useEffect, useState } from "react";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
+interface Content {
+  title: string;
+  snippet: string;
+  link: string;
+  source: string;
+  long_description: string;
+  image: string;
+  id: number;
+  is_active: boolean;
+}
+
+interface Prompt {
+  title: string;
+  user_id: number;
+  id: number;
+  created_at: string;
+}
+
+interface PostData {
+  prompt: Prompt;
+  subject: string;
+  contents: Content[];
+}
+
 const Profile = () => {
   const [history, setHistory] = useState<SidebarProps[]>([])
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -17,11 +41,10 @@ const Profile = () => {
   const [full_name, setFullName] = useState('');
   const [username, setUsername] = useState('');
   const [userPP, setUserPP] = useState('');
-  const [userURL, setUserURL] = useState('');
   const [bio, setBio] = useState('');
   const [followers, setFollowers] = useState(0);
   const [following, setFollowing] = useState(0);
-  const [prompts, setPrompts] = useState([])
+  const [prompts, setPrompts] = useState<PostData[]>([]);
 
   useEffect(() => {
     getProfile();
@@ -47,7 +70,6 @@ const Profile = () => {
         setFullName(data.full_name);
         setUsername(data.username);
         setUserPP(data.userPP);
-        setUserURL(data.userURL);
         setBio(data.bio);
         setFollowers(data.followers);
         setFollowing(data.following);
@@ -105,6 +127,7 @@ const Profile = () => {
 
           <div className="flex flex-col space-y-4 w-full max-w-[580px] my-10 px-4">
 
+
             <div className="flex flex-row gap-4 items-center pt-6">
               <div className="font-semibold text-lg text-black dark:text-white">
                 {full_name}
@@ -131,8 +154,18 @@ const Profile = () => {
               </div>
             </div>
           </div>
-
-          <Post username={username} userPP={userPP} userURL={userURL} prompts={prompts} removeUserInfo="hidden" removeDatePadding="px-0" promptDetailPadding="px-0" removePostMargin="mb-0" />
+          {prompts.sort((a, b) => new Date(b.prompt.created_at).getTime() - new Date(a.prompt.created_at).getTime()).map((post: any, index: any) => (
+            <Post
+              key={index}
+              post={post}
+              username={username}
+              userPP={userPP}
+              removeUserInfo="hidden"
+              removeDatePadding="px-0"
+              promptDetailPadding="px-0"
+              removePostMargin="mb-0"
+            />
+          ))}
         </main>
       </div>
     </>

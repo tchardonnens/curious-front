@@ -54,7 +54,6 @@ const Auth = () => {
         }
     }, [username, password, router]);
 
-
     return (
         <>
             <Toaster />
