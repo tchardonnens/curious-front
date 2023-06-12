@@ -101,8 +101,8 @@ export default function Home() {
             {resources && resources.map((resource, index) => {
               return (
                 <div key={index} className="flex flex-col items-center justify-center">
-                  <h2 className='text-3xl my-4 font-semibold text-neutral-600 dark:text-neutral-400'>{resource.subject.title}</h2>
-                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-2'>
+                  <h2 className='text-3xl mb-4 font-semibold text-neutral-600 dark:text-neutral-400'>{resource.subject.title}</h2>
+                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-5'>
                     {resource.content.youtube.map((result, idx) => (
                       <Card
                         key={idx}
@@ -115,7 +115,7 @@ export default function Home() {
                       />
                     ))}
                   </div>
-                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-2'>
+                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-5'>
                     {resource.content.reddit.map((result, idx) => (
                       <Card
                         key={idx}
@@ -128,7 +128,7 @@ export default function Home() {
                       />
                     ))}
                   </div>
-                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-2'>
+                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-5'>
                     {resource.content.twitter.map((result, idx) => (
                       <Card
                         key={idx}

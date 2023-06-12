@@ -154,7 +154,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          {prompts.sort((a, b) => new Date(b.prompt.created_at).getTime() - new Date(a.prompt.created_at).getTime()).map((post: any, index: any) => (
+            {prompts.sort((a, b) => new Date(b.prompt.created_at).getTime() - new Date(a.prompt.created_at).getTime()).map((post: any, index: any) => (
             <Post
               key={index}
               post={post}

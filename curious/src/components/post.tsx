@@ -53,7 +53,7 @@ const Post: React.FC<PostProps> = ({
           <ProfilePic src={userPP} alt="Avatar" addClass='h-10 w-10' />
           <h2 className="text-2xl text-black dark:text-white">{username}</h2>
         </div>
-        <div className={`text-neutral-600 dark:text-neutral-400 p-4 mb-3 ${promptDetailPadding}`}>
+        <div className={`flex flex-col justify-center items-center text-neutral-600 dark:text-neutral-400 p-4 mb-3 ${promptDetailPadding}`}>
           <h3>Searched for prompt: <span className='font-medium text-black dark:text-white'>{post.prompt.title}</span></h3>
           <div className={`text-neutral-600 dark:text-neutral-400 p-4 ${removeDatePadding}`}>
             <TimestampConverter timestamp={post.prompt.created_at} />
