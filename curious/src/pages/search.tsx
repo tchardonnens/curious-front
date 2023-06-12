@@ -7,6 +7,7 @@ import Sidebar from '@/components/sidebar';
 import { Resources, SidebarProps } from '@/types/props';
 
 import { FiSend } from 'react-icons/fi';
+
 import Empty from '@/components/empty';
 
 export default function Home() {
@@ -110,6 +111,8 @@ export default function Home() {
                         description={result.snippet}
                         image={result.image}
                         url={result.link}
+                        displayTwitterIcon="hidden"
+                        displayRedditIcon="hidden"
                       />
                     ))}
                   </div>
@@ -122,6 +125,8 @@ export default function Home() {
                         description={result.snippet}
                         image={result.image}
                         url={result.link}
+                        displayTwitterIcon="hidden"
+                        displayYoutubeIcon="hidden"
                       />
                     ))}
                   </div>
@@ -134,6 +139,8 @@ export default function Home() {
                         description={result.snippet}
                         image={result.image}
                         url={result.link}
+                        displayRedditIcon="hidden"
+                        displayYoutubeIcon="hidden"
                       />
                     ))}
                   </div>
