@@ -1,6 +1,6 @@
 import Card from '@/components/card';
 import LoadingSkeleton from '@/components/loadingSkeleton';
-import { SetStateAction, useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import PageHead from '@/components/head';
 import Header from '@/components/header';
 import Sidebar from '@/components/sidebar';
@@ -18,6 +18,35 @@ export default function Home() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+  useEffect(() => {
+    getPrompts();
+  }, []);
+
+  const getPrompts = async () => {
+    const token = localStorage.getItem('authToken');
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/prompts/me`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      response.json().then((data) => {
+        console.log(data);
+        setHistory(data);
+      });
+    } catch (error) {
+      console.error('An error occurred while getting prompts:', error);
+      throw error;
+    }
+  };
 
   const handleTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPrompt(event.target.value);
@@ -57,7 +86,7 @@ export default function Home() {
 
         <main className="bg-lightGrey dark:bg-anthracite flex w-full flex-col items-center justify-center text-center">
           <div className="w-full h-full flex flex-col items-center justify-start px-4 sm:px-10 pt-4 pb-8 sm:py-10 overflow-scroll">
-            {(!resources && !loading) && 
+            {(!resources && !loading) &&
               <Empty />
             }
             {(resources || loading) && <div className="max-w-xl w-full mt-2">
@@ -71,7 +100,7 @@ export default function Home() {
             {resources && resources.map((resource, index) => {
               return (
                 <div key={index} className="flex flex-col items-center justify-center">
-                  <h2 className='text-3xl m-5 font-bold'>{resource.prompt.title}</h2>
+                  <h2 className='text-3xl m-5 font-bold'>{resource.subject.title}</h2>
                   <h3 className='text-2xl mb-5'>YouTube</h3>
                   <div className='grid grid-cols-2 gap-6'>
                     {resource.content.youtube.map((result, idx) => (
