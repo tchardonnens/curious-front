@@ -98,7 +98,7 @@ export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: Header
           <HiBars3 className='shrink-0 grow-0' size={30} />
         </button>
       </div>
-      
+
     );
   }
 
