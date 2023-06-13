@@ -7,6 +7,14 @@ import Sidebar from '@/components/sidebar';
 import { Resources, SidebarProps } from '@/types/props';
 import Empty from '@/components/empty';
 
+interface User {
+  id: number;
+  username: string;
+  full_name: string;
+  bio: string;
+  profile_picture: string;
+}
+
 interface PromptContent {
   title: string;
   snippet: string;
@@ -19,6 +27,7 @@ interface PromptContent {
 }
 
 interface PostData {
+  user: User;
   prompt: {
     title: string;
     user_id: number;
@@ -49,7 +58,7 @@ export default function Home() {
       const token = localStorage.getItem('authToken');
 
       try {
-        const response = await fetch(`${API_BASE_URL}/prompts/feed`, {
+        const response = await fetch(`${API_BASE_URL}/feed`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -76,7 +85,7 @@ export default function Home() {
     };
 
     getPrompts();
-
+    console.log(prompts);
     // Cleanup
     return () => {
       isMounted = false;
@@ -101,11 +110,12 @@ export default function Home() {
                 My feed 😀
               </h2>
             </div>}
-            {prompts.sort((a, b) => new Date(b.prompt.created_at).getTime() - new Date(a.prompt.created_at).getTime()).map((post: any, index: any) => (
+
+            {prompts.sort((a, b) => new Date(b.prompt.created_at).getTime() - new Date(a.prompt.created_at).getTime()).map((post: PostData, index: any) => (
               <Post
                 key={index}
                 post={post}
-                username={username}
+                username={post.user.full_name}
                 userPP={userPP}
               />
             ))}

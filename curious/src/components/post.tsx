@@ -38,7 +38,7 @@ interface PostProps {
 const Post: React.FC<PostProps> = ({
   post,
   username,
-  userPP = '/PP-test.png',
+  userPP,
   removeUserInfo,
   removeDatePadding,
   promptDetailPadding,
@@ -50,7 +50,7 @@ const Post: React.FC<PostProps> = ({
     <div className={`w-full mb-8 ${removePostMargin}`}>
       <div className='flex flex-col justify-center w-full rounded-lg md:p-6 mb-3'>
         <div className={`flex flex-col items-center justify-center gap-2 ${removeUserInfo}`}>
-          <ProfilePic src={userPP} alt="Avatar" addClass='h-10 w-10' />
+          <ProfilePic src="/pp-thomas.png" alt="Avatar" addClass='h-10 w-10' />
           <h2 className="text-2xl text-black dark:text-white">{username}</h2>
         </div>
         <div className={`flex flex-col justify-center items-center text-neutral-600 dark:text-neutral-400 p-4 mb-3 ${promptDetailPadding}`}>
