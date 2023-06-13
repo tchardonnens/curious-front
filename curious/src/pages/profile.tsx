@@ -65,14 +65,13 @@ const Profile = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       response.json().then((data) => {
-        setFullName(data.full_name);
-        setUsername(data.username);
-        setUserPP(data.userPP);
-        setBio(data.bio);
+        setFullName(data.user.full_name);
+        setUsername(data.user.username);
+        setUserPP(data.user.profile_picture);
+        setBio(data.user.bio);
         setFollowers(data.followers);
-        setFollowing(data.following);
+        setFollowing(data.followings);
       });
     } catch (error) {
       console.error('An error occurred while registering:', error);
@@ -154,7 +153,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-            {prompts.sort((a, b) => new Date(b.prompt.created_at).getTime() - new Date(a.prompt.created_at).getTime()).map((post: any, index: any) => (
+          {prompts.sort((a, b) => new Date(b.prompt.created_at).getTime() - new Date(a.prompt.created_at).getTime()).map((post: any, index: any) => (
             <Post
               key={index}
               post={post}

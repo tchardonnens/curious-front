@@ -25,6 +25,7 @@ export type YoutubeVideoSimple = {
 }
 
 export type CleanGoogleResults = {
+  id: number;
   title: string;
   snippet: string;
   link: string;
@@ -46,8 +47,9 @@ export type Prompt = {
 }
 
 export type Resources = {
-  subject: Prompt;
-  content: AllSourcesCleanGoogleResult;
+  prompt: Prompt;
+  subject: string;
+  contents: CleanGoogleResults[];
 }
 
 export type User = {

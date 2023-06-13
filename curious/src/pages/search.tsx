@@ -101,9 +101,9 @@ export default function Home() {
             {resources && resources.map((resource, index) => {
               return (
                 <div key={index} className="flex flex-col items-center justify-center">
-                  <h2 className='text-3xl mb-4 font-semibold text-neutral-600 dark:text-neutral-400'>{resource.subject.title}</h2>
+                  <h2 className='text-3xl mb-4 font-semibold text-neutral-600 dark:text-neutral-400'>{resource.subject}</h2>
                   <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-5'>
-                    {resource.content.youtube.map((result, idx) => (
+                    {resource.contents.map((result, idx) => (
                       <Card
                         key={idx}
                         title={result.title}
@@ -112,39 +112,13 @@ export default function Home() {
                         url={result.link}
                         displayTwitterIcon="hidden"
                         displayRedditIcon="hidden"
-                      />
-                    ))}
-                  </div>
-                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-5'>
-                    {resource.content.reddit.map((result, idx) => (
-                      <Card
-                        key={idx}
-                        title={result.title}
-                        description={result.snippet}
-                        image={result.image}
-                        url={result.link}
-                        displayTwitterIcon="hidden"
-                        displayYoutubeIcon="hidden"
-                      />
-                    ))}
-                  </div>
-                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-5'>
-                    {resource.content.twitter.map((result, idx) => (
-                      <Card
-                        key={idx}
-                        title={result.title}
-                        description={result.snippet}
-                        image={result.image}
-                        url={result.link}
-                        displayRedditIcon="hidden"
-                        displayYoutubeIcon="hidden"
                       />
                     ))}
                   </div>
                 </div>
               )
             })}
-            
+
           </div>
 
           <form className="max-w-xl w-full px-4 sm:px-10 pb-4 sm:pb-10 relative z-9 bg-transparent" onSubmit={(e) => { e.preventDefault(); fetchResources(); }}>

@@ -31,11 +31,11 @@ interface PostData {
 
 export default function Home() {
   const [resources, setResources] = useState<Resources>()
-  const [loading, setLoading] = useState(false)
   const [history, setHistory] = useState<SidebarProps[]>([])
   const [username, setUsername] = useState('');
   const [userPP, setUserPP] = useState('');
   const [prompts, setPrompts] = useState<PostData[]>([]);
+  const [loading, setLoading] = useState(true);
 
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -44,11 +44,12 @@ export default function Home() {
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   useEffect(() => {
+    let isMounted = true; // This flag is used to prevent setting state on an unmounted component
     const getPrompts = async () => {
       const token = localStorage.getItem('authToken');
 
       try {
-        const response = await fetch(`${API_BASE_URL}/prompts/profile/me`, {
+        const response = await fetch(`${API_BASE_URL}/prompts/feed`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -59,17 +60,30 @@ export default function Home() {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        response.json().then((data) => {
-          console.log(data);
+
+        const data = await response.json();
+        console.log(data);
+        if (isMounted) {
           setPrompts(data);
-        });
+          setLoading(false);
+        }
       } catch (error) {
         console.error('An error occurred while getting prompts:', error);
-        throw error;
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
+
     getPrompts();
-  }, [API_BASE_URL, prompts]);
+
+    // Cleanup
+    return () => {
+      isMounted = false;
+    };
+
+  }, []);
+
 
   return (
     <>
