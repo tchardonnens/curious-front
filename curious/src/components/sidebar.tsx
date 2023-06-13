@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SidebarPropsList } from '@/types/props';
+import { Prompt, SidebarPropsList } from '@/types/props';
 import useColorMode from '../../hooks/useColorMode';
 
 import { FiPlus, FiSearch, FiTrash, FiSun, FiMoon } from 'react-icons/fi';
@@ -12,7 +12,7 @@ interface SidebarProps extends SidebarPropsList {
   isSidebarOpen: boolean;
   isSidebarVisible: boolean;
   history: any;
-  fetchResourcesFromHistory?: (itemId: string) => void;
+  fetchResourcesFromHistory?: (itemId: number) => void;
 }
 
 export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetchResourcesFromHistory }: SidebarProps) {
@@ -57,6 +57,7 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
   
 
   return (
+    
     <div className={`w-full shrink-0 grow-0 ${isSidebarOpen ? 'flex' : 'hidden'} ${isSidebarVisible ? 'md:w-[272px] md:flex' : 'md:w-0 md:flex'} relative z-9 md:static md:z-0 bg-white dark:bg-dark`} style={{ opacity: isSidebarVisible ? 1 : 0, transition: 'opacity 0.4s ease-in-out, width 0.4s ease-in-out' }}>
       {isSidebarVisible && (
         <div className="px-4 flex relative flex-col gap-2 justify-between narrow-sidebar w-full h-full lg:flex-shrink-0 lg:overflow-y-auto">
@@ -70,11 +71,11 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
               </div>
             ) : (
               <div className='flex flex-col flex-1 overflow-y-auto relative pb-[105px] md:pb-[57px] custom-scrollbar'>
-                {history.map((item: any, index: any) => {
+                {history.map((prompt: Prompt, index: any) => {
                   return (
-                    <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index} onClick={() => fetchResourcesFromHistory && fetchResourcesFromHistory(item.id)}>
+                    <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index} onClick={() => fetchResourcesFromHistory && fetchResourcesFromHistory(prompt.id)}>
                       <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">{item.title}</span>
+                      <span className="truncate">{prompt.title}</span>
                     </button>
                   );
                 })}
