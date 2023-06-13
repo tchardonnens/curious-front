@@ -11,10 +11,11 @@ import { useRouter } from 'next/router';
 interface SidebarProps extends SidebarPropsList {
   isSidebarOpen: boolean;
   isSidebarVisible: boolean;
-  history: any
+  history: any;
+  fetchResourcesFromHistory?: (itemId: string) => void;
 }
 
-export default function Sidebar({ history, isSidebarOpen, isSidebarVisible }: SidebarProps) {
+export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetchResourcesFromHistory }: SidebarProps) {
   const router = useRouter();
   const [isMounted, setIsMounted] = useState(false);
   const [colorMode, setColorMode] = useColorMode();
@@ -53,6 +54,7 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible }: Si
     )
 
   }
+  
 
   return (
     <div className={`w-full shrink-0 grow-0 ${isSidebarOpen ? 'flex' : 'hidden'} ${isSidebarVisible ? 'md:w-[272px] md:flex' : 'md:w-0 md:flex'} relative z-9 md:static md:z-0 bg-white dark:bg-dark`} style={{ opacity: isSidebarVisible ? 1 : 0, transition: 'opacity 0.4s ease-in-out, width 0.4s ease-in-out' }}>
@@ -70,7 +72,7 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible }: Si
               <div className='flex flex-col flex-1 overflow-y-auto relative pb-[105px] md:pb-[57px] custom-scrollbar'>
                 {history.map((item: any, index: any) => {
                   return (
-                    <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index}>
+                    <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index} onClick={() => fetchResourcesFromHistory && fetchResourcesFromHistory(item.id)}>
                       <FiSearch className='shrink-0 grow-0' />
                       <span className="truncate">{item.title}</span>
                     </button>
