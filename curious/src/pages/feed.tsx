@@ -96,9 +96,9 @@ export default function Home() {
               />
             ))}
             {loading && <LoadingSkeleton />}
-            {/* {(!resources && !loading) && 
+            {(!resources && !loading) && 
               <Empty />
-            } */}
+            }
           </div>
         </main>
       </div>
