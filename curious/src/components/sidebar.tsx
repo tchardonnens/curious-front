@@ -62,12 +62,12 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible }: Si
 
             {sidebarSearchBtn}
 
-            {/* {history.length === 0 ? (
-              <div className='flex items-center justify-center h-full'>
+            {history.length === 0 ? (
+              <div className='flex items-center justify-center h-full pb-[161px] md:pb-[113px]'>
                 <p className='w-full text-center text-darkerGrey dark:text-darkGrey'>😥 Search history is empty.</p>
               </div>
             ) : (
-              <div className='flex h-full'>
+              <div className='flex flex-col flex-1 overflow-y-auto relative pb-[161px] md:pb-[113px]'>
                 {history.map((item: any, index: any) => {
                   return (
                     <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index}>
@@ -77,132 +77,7 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible }: Si
                   );
                 })}
               </div>
-            )} */}
-            <div className='flex flex-col flex-1 overflow-y-auto relative pb-[161px] md:pb-[113px]'>
-              <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button>
-                    <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button><button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">AAAA</span>
-                    </button>
-                    
-            </div>
+            )}
 
           </div>
           <div className="bg-white dark:bg-dark py-4 border-t border-solid border-darkGrey absolute z-1 bottom-0 left-0 right-0 mx-4">
