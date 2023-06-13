@@ -49,6 +49,31 @@ export default function Home() {
     }
   };
 
+  const fetchResourcesFromHistory = async (itemId: string) => {
+    const token = localStorage.getItem('authToken');
+  
+    try {
+      const response = await fetch(`${API_BASE_URL}/prompts/${itemId}/contents`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+  
+      setResources(data);
+  
+    } catch (error) {
+      console.error('An error occurred while fetching resources:', error);
+    }
+  };
+
   const handleTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPrompt(event.target.value);
     event.target.style.height = 'auto';
@@ -83,7 +108,7 @@ export default function Home() {
 
       <div className="flex flex-row w-full h-full overflow-hidden">
 
-        <Sidebar history={history} isSidebarOpen={isSidebarOpen} isSidebarVisible={isSidebarVisible} />
+        <Sidebar history={history} isSidebarOpen={isSidebarOpen} isSidebarVisible={isSidebarVisible} fetchResourcesFromHistory={fetchResourcesFromHistory} />
 
         <main className="bg-lightGrey dark:bg-anthracite flex w-full flex-col items-center justify-center text-center">
           <div className="w-full h-full flex flex-col items-center justify-start px-4 sm:px-10 pt-4 pb-8 sm:py-10 overflow-scroll">
