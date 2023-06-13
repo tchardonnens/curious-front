@@ -55,23 +55,32 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible }: Si
   }
 
   return (
-    <div className={`w-full shrink-0 ${isSidebarOpen ? 'flex' : 'hidden'} ${isSidebarVisible ? 'md:w-[272px] md:flex' : 'md:w-0 md:flex'} relative z-9 md:static md:z-0 bg-white dark:bg-dark`} style={{ opacity: isSidebarVisible ? 1 : 0, transition: 'opacity 0.4s ease-in-out, width 0.4s ease-in-out' }}>
+    <div className={`w-full shrink-0 grow-0 ${isSidebarOpen ? 'flex' : 'hidden'} ${isSidebarVisible ? 'md:w-[272px] md:flex' : 'md:w-0 md:flex'} relative z-9 md:static md:z-0 bg-white dark:bg-dark`} style={{ opacity: isSidebarVisible ? 1 : 0, transition: 'opacity 0.4s ease-in-out, width 0.4s ease-in-out' }}>
       {isSidebarVisible && (
-        <div className="px-4 flex flex-col gap-2 justify-between narrow-sidebar w-full h-full lg:flex-shrink-0 lg:overflow-y-auto">
-          <div className="py-4 flex flex-col gap-2">
+        <div className="px-4 flex relative flex-col gap-2 justify-between narrow-sidebar w-full h-full lg:flex-shrink-0 lg:overflow-y-auto">
+          <div className="py-4 flex flex-col gap-2 h-full">
 
             {sidebarSearchBtn}
 
-            {history.map((item: any, index: any) => {
-              return (
-                <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index}>
-                  <FiSearch className='shrink-0 grow-0' />
-                  <span className="truncate">{item.title}</span>
-                </button>
-              );
-            })}
+            {history.length === 0 ? (
+              <div className='flex items-center justify-center h-full pb-[161px] md:pb-[113px]'>
+                <p className='w-full text-center text-darkerGrey dark:text-darkGrey'>😥 Search history is empty.</p>
+              </div>
+            ) : (
+              <div className='flex flex-col flex-1 overflow-y-auto relative pb-[161px] md:pb-[113px]'>
+                {history.map((item: any, index: any) => {
+                  return (
+                    <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index}>
+                      <FiSearch className='shrink-0 grow-0' />
+                      <span className="truncate">{item.title}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
           </div>
-          <div className="py-4 border-t border-solid border-darkGrey">
+          <div className="bg-white dark:bg-dark py-4 border-t border-solid border-darkGrey absolute z-1 bottom-0 left-0 right-0 mx-4">
 
             <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
               <FiTrash className='shrink-0 grow-0' />
