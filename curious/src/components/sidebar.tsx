@@ -67,7 +67,7 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible }: Si
                 <p className='w-full text-center text-darkerGrey dark:text-darkGrey'>😥 Search history is empty.</p>
               </div>
             ) : (
-              <div className='flex flex-col flex-1 overflow-y-auto relative pb-[161px] md:pb-[113px]'>
+              <div className='flex flex-col flex-1 overflow-y-auto relative pb-[105px] md:pb-[57px]'>
                 {history.map((item: any, index: any) => {
                   return (
                     <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index}>

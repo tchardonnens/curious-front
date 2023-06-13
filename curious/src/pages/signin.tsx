@@ -65,7 +65,7 @@ const Auth = () => {
                         Sign in
                     </h2>
                     <div className='flex flex-col gap-4'>
-                        <Input label="Email or Username" onChange={(e: any) => setUsername(e.target.value)} id="email" type="email" value={username} />
+                        <Input label="Username" onChange={(e: any) => setUsername(e.target.value)} id="email" type="email" value={username} />
                         <Input label="Password" onChange={(e: any) => setPassword(e.target.value)} id="password" type="password" value={password} />
                     </div>
                     <button onClick={toasterLogin} className='bg-black py-3 text-white rounded-md w-full mt-10 hover:bg-dark hover:opacity-90 transition'>Login</button>
