@@ -89,7 +89,6 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
     )
   }
 
-
   return (
     <>
       <Toaster />
@@ -106,12 +105,11 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
                 </div>
               ) : (
                 <div className='flex flex-col flex-1 overflow-y-auto relative pb-[105px] md:pb-[57px] custom-scrollbar'>
-                  {history.map((item: any, index: any) => {
-                    console.log(item);
+                  {history.map((prompt: Prompt, index: any) => {
                     return (
-                      <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index}>
+                      <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index} onClick={() => fetchResourcesFromHistory && fetchResourcesFromHistory(prompt.id)}>
                         <FiSearch className='shrink-0 grow-0' />
-                        <span className="truncate">{item.title}</span>
+                        <span className="truncate">{prompt.title}</span>
                       </button>
                     );
                   })}
