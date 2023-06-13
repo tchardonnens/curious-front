@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Prompt, SidebarPropsList } from '@/types/props';
 import useColorMode from '../../hooks/useColorMode';
 
-import { FiPlus, FiSearch, FiTrash, FiSun, FiMoon } from 'react-icons/fi';
-import { BiUser } from 'react-icons/bi';
+import { FiPlus, FiSearch, FiTrash, FiSun, FiMoon, FiUserPlus } from 'react-icons/fi';
 import { AiOutlineUser } from 'react-icons/ai';
 import { useRouter } from 'next/router';
-
+import toast, { Toaster } from 'react-hot-toast';
 
 interface SidebarProps extends SidebarPropsList {
   isSidebarOpen: boolean;
@@ -17,9 +16,46 @@ interface SidebarProps extends SidebarPropsList {
 
 export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetchResourcesFromHistory }: SidebarProps) {
   const router = useRouter();
+  const [username, setUsername] = useState('');
   const [isMounted, setIsMounted] = useState(false);
   const [colorMode, setColorMode] = useColorMode();
   let sidebarSearchBtn;
+
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+  const toasterFollow = () => {
+    toast.promise(
+      register(),
+      {
+        loading: 'Creating user... ⏳',
+        success: <b>You now follow {username}! 🥳</b>,
+        error: <b>Could not follow {username} 🤔</b>,
+      }
+    );
+  }
+
+  const register = async () => {
+    const token = localStorage.getItem('authToken');
+    try {
+      const response = await fetch(`${API_BASE_URL}/users/follow/username/${username}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ username })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+    } catch (error) {
+      console.error('An error occurred while trying to follow:', error);
+      throw error;
+    }
+  };
 
   useEffect(() => {
     setIsMounted(true);
@@ -33,7 +69,7 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
   const toggleText = colorMode === 'light' ? 'Dark Mode' : 'Light Mode';
 
   if (router.pathname === '/search') {
-    
+
     sidebarSearchBtn = (
       <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey border-2 border-darkerGrey dark:border-darkGrey transition-colors flex flex-row gap-4 items-center justify-start">
         <FiPlus size={18} className='shrink-0 grow-0' />
@@ -42,68 +78,68 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
     )
 
   } else if (router.pathname === '/feed') {
-    
     sidebarSearchBtn = (
       <div className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg border-2 border-darkerGrey dark:border-darkGrey transition-colors flex flex-row gap-4 items-center justify-start">
-        <BiUser size={18} className='shrink-0 grow-0' />
-        <input className="w-full text-black dark:text-darkGrey bg-transparent outline-none overflow-y-hidden max-h-24" placeholder='Search for user'
-          onChange={() => {
-            //function here to search for user in feed
-          }} />
+
+        <input className="w-full text-black dark:text-darkGrey bg-transparent outline-none overflow-y-hidden max-h-24" placeholder='Follow by username' value={username} onChange={(e) => setUsername(e.target.value)} />
+        <button className="text-darkerGrey dark:text-darkGrey p-2 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey transition-colors" onClick={toasterFollow}>
+          <FiUserPlus size={18} className='shrink-0 grow-0' />
+        </button>
       </div>
     )
-
   }
-  
+
 
   return (
-    
-    <div className={`w-full shrink-0 grow-0 ${isSidebarOpen ? 'flex' : 'hidden'} ${isSidebarVisible ? 'md:w-[272px] md:flex' : 'md:w-0 md:flex'} relative z-9 md:static md:z-0 bg-white dark:bg-dark`} style={{ opacity: isSidebarVisible ? 1 : 0, transition: 'opacity 0.4s ease-in-out, width 0.4s ease-in-out' }}>
-      {isSidebarVisible && (
-        <div className="px-4 flex relative flex-col gap-2 justify-between narrow-sidebar w-full h-full lg:flex-shrink-0 lg:overflow-y-auto">
-          <div className="py-4 flex flex-col gap-2 h-full">
+    <>
+      <Toaster />
+      <div className={`w-full shrink-0 grow-0 ${isSidebarOpen ? 'flex' : 'hidden'} ${isSidebarVisible ? 'md:w-[272px] md:flex' : 'md:w-0 md:flex'} relative z-9 md:static md:z-0 bg-white dark:bg-dark`} style={{ opacity: isSidebarVisible ? 1 : 0, transition: 'opacity 0.4s ease-in-out, width 0.4s ease-in-out' }}>
+        {isSidebarVisible && (
+          <div className="px-4 flex relative flex-col gap-2 justify-between narrow-sidebar w-full h-full lg:flex-shrink-0 lg:overflow-y-auto">
+            <div className="py-4 flex flex-col gap-2 h-full">
 
-            {sidebarSearchBtn}
+              {sidebarSearchBtn}
 
-            {history.length === 0 ? (
-              <div className='flex items-center justify-center h-full pb-[161px] md:pb-[113px]'>
-                <p className='w-full text-center text-darkerGrey dark:text-darkGrey'>😥 Search history is empty.</p>
-              </div>
-            ) : (
-              <div className='flex flex-col flex-1 overflow-y-auto relative pb-[105px] md:pb-[57px] custom-scrollbar'>
-                {history.map((prompt: Prompt, index: any) => {
-                  return (
-                    <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index} onClick={() => fetchResourcesFromHistory && fetchResourcesFromHistory(prompt.id)}>
-                      <FiSearch className='shrink-0 grow-0' />
-                      <span className="truncate">{prompt.title}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            )}
+              {history.length === 0 ? (
+                <div className='flex items-center justify-center h-full pb-[161px] md:pb-[113px]'>
+                  <p className='w-full text-center text-darkerGrey dark:text-darkGrey'>😥 Search history is empty.</p>
+                </div>
+              ) : (
+                <div className='flex flex-col flex-1 overflow-y-auto relative pb-[105px] md:pb-[57px] custom-scrollbar'>
+                  {history.map((item: any, index: any) => {
+                    console.log(item);
+                    return (
+                      <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index}>
+                        <FiSearch className='shrink-0 grow-0' />
+                        <span className="truncate">{item.title}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
 
+            </div>
+            <div className="bg-white dark:bg-dark py-4 border-t border-solid border-darkGrey absolute z-1 bottom-0 left-0 right-0 mx-4">
+
+              <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
+                <FiTrash className='shrink-0 grow-0' />
+                <span className="truncate">Clear searches</span>
+              </button>
+
+              <button onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
+                {toggleIcon}
+                <span className="truncate">{toggleText}</span>
+              </button>
+
+              <button onClick={() => router.push('/profile')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start md:hidden">
+                <AiOutlineUser className='shrink-0 grow-0' />
+                <span className="truncate">My Account</span>
+              </button>
+
+            </div>
           </div>
-          <div className="bg-white dark:bg-dark py-4 border-t border-solid border-darkGrey absolute z-1 bottom-0 left-0 right-0 mx-4">
-
-            <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-              <FiTrash className='shrink-0 grow-0' />
-              <span className="truncate">Clear searches</span>
-            </button>
-
-            <button onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-              {toggleIcon}
-              <span className="truncate">{toggleText}</span>
-            </button>
-
-            <button onClick={() => router.push('/profile')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start md:hidden">
-              <AiOutlineUser className='shrink-0 grow-0' />
-              <span className="truncate">My Account</span>
-            </button>
-
-          </div>
-        </div>
-      )}
-    </div>
-
+        )}
+      </div>
+    </>
   );
 }
