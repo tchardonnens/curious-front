@@ -49,26 +49,26 @@ export default function Home() {
     }
   };
 
-  const fetchResourcesFromHistory = async (itemId: string) => {
+  const fetchResourcesFromHistory = async (prompt_id: number) => {
     const token = localStorage.getItem('authToken');
-  
+
     try {
-      const response = await fetch(`${API_BASE_URL}/prompts/${itemId}/contents`, {
+      const response = await fetch(`${API_BASE_URL}/prompts/${prompt_id}/contents`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
       });
-  
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-  
+
       const data = await response.json();
-  
+      console.log(data);
       setResources(data);
-  
+
     } catch (error) {
       console.error('An error occurred while fetching resources:', error);
     }

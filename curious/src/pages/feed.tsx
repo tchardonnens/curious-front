@@ -101,12 +101,12 @@ export default function Home() {
 
       <div className="flex flex-row w-full h-full overflow-hidden">
 
-        <Sidebar history={history} isSidebarOpen={isSidebarOpen} isSidebarVisible={isSidebarVisible}  />
+        <Sidebar history={history} isSidebarOpen={isSidebarOpen} isSidebarVisible={isSidebarVisible} />
 
         <main className="bg-lightGrey dark:bg-anthracite flex w-full flex-col items-center justify-center text-center">
           <div className="w-full h-full flex flex-col items-center justify-start px-4 sm:px-10 pt-4 pb-8 sm:py-10 overflow-scroll">
-            {(resources || loading) && <div className="max-w-xl w-full mt-10">
-              <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-10 text-slate-900">
+            {(resources || loading) && <div className="max-w-xl w-full mt-2">
+              <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-5 text-dark dark:text-white">
                 My feed 😀
               </h2>
             </div>}
@@ -120,7 +120,7 @@ export default function Home() {
               />
             ))}
             {loading && <LoadingSkeleton />}
-            {(!resources && !loading) && 
+            {(!resources && loading) &&
               <Empty />
             }
           </div>
