@@ -26,13 +26,13 @@ export default function Header({ setIsSidebarOpen, setIsSidebarVisible }: Header
     const path = router.pathname;
     if (indicatorRef.current && feedRef.current && searchRef.current) {
       if (path === '/feed') {
-        indicatorRef.current.style.left = '0';
-        indicatorRef.current.style.transform = 'translateX(131.3333%)';
+        indicatorRef.current.style.left = '8.6667%';
+        indicatorRef.current.style.transform = 'translateX(110.3333%)';
         indicatorRef.current.classList.add('hidden', 'sm:block');
         feedRef.current.classList.add('hidden', 'sm:block');
       } else if (path === '/search') {
-        indicatorRef.current.style.right = '0';
-        indicatorRef.current.style.transform = 'translateX(-131.3333%)';
+        indicatorRef.current.style.right = '8.6667%';
+        indicatorRef.current.style.transform = 'translateX(-110.3333%)';
         indicatorRef.current.classList.add('hidden', 'sm:block');
         searchRef.current.classList.add('hidden', 'sm:block');
       }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Prompt, SidebarPropsList } from '@/types/props';
 import useColorMode from '../../hooks/useColorMode';
 
-import { FiPlus, FiSearch, FiTrash, FiSun, FiMoon, FiUserPlus } from 'react-icons/fi';
+import { FiPlus, FiSearch, FiTrash, FiSun, FiMoon, FiUserPlus, FiLogOut } from 'react-icons/fi';
 import { AiOutlineUser } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
@@ -20,6 +20,8 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
   const [isMounted, setIsMounted] = useState(false);
   const [colorMode, setColorMode] = useColorMode();
   let sidebarSearchBtn;
+  let signOutBtn;
+  let clearSearchesBtn;
 
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -79,13 +81,31 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
 
   } else if (router.pathname === '/feed') {
     sidebarSearchBtn = (
-      <div className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg border-2 border-darkerGrey dark:border-darkGrey transition-colors flex flex-row gap-4 items-center justify-start">
+      <div className="text-darkerGrey dark:text-darkGrey w-full px-4 py-1.5 rounded-lg border-2 border-darkerGrey dark:border-darkGrey transition-colors flex flex-row gap-4 items-center justify-start">
 
         <input className="w-full text-black dark:text-darkGrey bg-transparent outline-none overflow-y-hidden max-h-24" placeholder='Follow by username' value={username} onChange={(e) => setUsername(e.target.value)} />
         <button className="text-darkerGrey dark:text-darkGrey p-2 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey transition-colors" onClick={toasterFollow}>
           <FiUserPlus size={18} className='shrink-0 grow-0' />
         </button>
       </div>
+    )
+  }
+
+  if (router.pathname === '/profile') {
+    signOutBtn = (
+      <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey transition-colors flex flex-row gap-4 items-center justify-start">
+        <FiLogOut size={18} className='shrink-0 grow-0' />
+        <span className="truncate">Sign out</span>
+      </button>
+    )
+  }
+
+  if (router.pathname === '/search' || router.pathname === '/feed') {
+    clearSearchesBtn = (
+      <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
+        <FiTrash className='shrink-0 grow-0' />
+        <span className="truncate">Clear searches</span>
+      </button>
     )
   }
 
@@ -120,15 +140,14 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
             </div>
             <div className="bg-white dark:bg-dark py-4 border-t border-solid border-darkGrey absolute z-1 bottom-0 left-0 right-0 mx-4">
 
-              <button className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
-                <FiTrash className='shrink-0 grow-0' />
-                <span className="truncate">Clear searches</span>
-              </button>
-
               <button onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start">
                 {toggleIcon}
                 <span className="truncate">{toggleText}</span>
               </button>
+
+              {clearSearchesBtn}
+              
+              {signOutBtn}
 
               <button onClick={() => router.push('/profile')} className="text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start md:hidden">
                 <AiOutlineUser className='shrink-0 grow-0' />
