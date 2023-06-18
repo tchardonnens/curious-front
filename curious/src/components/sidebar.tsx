@@ -83,7 +83,7 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
     sidebarSearchBtn = (
       <div className="text-darkerGrey dark:text-darkGrey w-full px-4 py-1.5 rounded-lg border-2 border-darkerGrey dark:border-darkGrey transition-colors flex flex-row gap-4 items-center justify-start">
 
-        <input className="w-full text-black dark:text-darkGrey bg-transparent outline-none overflow-y-hidden max-h-24" placeholder='Follow by username' value={username} onChange={(e) => setUsername(e.target.value)} />
+        <input className="w-full text-black dark:text-darkGrey bg-transparent outline-none overflow-y-hidden max-h-24 my-1.5" placeholder='Follow by username' value={username} onChange={(e) => setUsername(e.target.value)} />
         <button className="text-darkerGrey dark:text-darkGrey p-2 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey transition-colors" onClick={toasterFollow}>
           <FiUserPlus size={18} className='shrink-0 grow-0' />
         </button>
