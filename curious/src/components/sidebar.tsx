@@ -126,11 +126,27 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
               ) : (
                 <div className='flex flex-col flex-1 overflow-y-auto relative pb-[105px] md:pb-[57px] custom-scrollbar'>
                   {history.map((prompt: Prompt, index: any) => {
+                    const [selectedButton, setSelectedButton] = useState(null);
+
                     return (
-                      <button className="relative text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start" key={index} onClick={() => fetchResourcesFromHistory && fetchResourcesFromHistory(prompt.id)}>
-                        <FiSearch className='shrink-0 grow-0' />
+                      <button
+                        className={`relative text-darkerGrey dark:text-darkGrey w-full px-4 py-3 rounded-lg hover:bg-lightGrey dark:hover:bg-darkerGrey flex flex-row gap-4 items-center justify-start ${
+                          selectedButton ? 'bg-lightGrey dark:bg-darkerGrey' : ''
+                        }`}
+                        key={index}
+                        onClick={() => {
+                          fetchResourcesFromHistory && fetchResourcesFromHistory(prompt.id);
+                          setSelectedButton(index);
+                        }}
+                      >
+                        <FiSearch className="shrink-0 grow-0" />
                         <span className="truncate">{prompt.title}</span>
-                        <FiTrash size={18} className='shrink-0 grow-0 absolute right-2 z-10 text-darkerGrey dark:text-darkGrey hover:text-black dark:hover:text-white transition-colors cursor-pointer' />
+                        <div className={`absolute right-2 z-10 ${selectedButton ? 'visible' : 'invisible'}`}>
+                          <FiTrash
+                            size={18}
+                            className="shrink-0 grow-0 text-darkerGrey dark:text-darkGrey hover:text-black dark:hover:text-white transition-colors cursor-pointer"
+                          />
+                        </div>
                       </button>
                     );
                   })}
