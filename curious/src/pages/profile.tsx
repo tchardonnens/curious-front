@@ -70,8 +70,8 @@ const Profile = () => {
         setUsername(data.user.username);
         setUserPP(data.user.profile_picture);
         setBio(data.user.bio);
+        setFollowing(data.follows);
         setFollowers(data.followers);
-        setFollowing(data.followings);
       });
     } catch (error) {
       console.error('An error occurred while registering:', error);
