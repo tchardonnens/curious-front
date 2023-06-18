@@ -18,6 +18,7 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [isMounted, setIsMounted] = useState(false);
+  const [selectedButton, setSelectedButton] = useState('');
   const [colorMode, setColorMode] = useColorMode();
   let sidebarSearchBtn;
   let signOutBtn;
@@ -126,7 +127,6 @@ export default function Sidebar({ history, isSidebarOpen, isSidebarVisible, fetc
               ) : (
                 <div className='flex flex-col flex-1 overflow-y-auto relative pb-[105px] md:pb-[57px] custom-scrollbar'>
                   {history.map((prompt: Prompt, index: any) => {
-                    const [selectedButton, setSelectedButton] = useState(null);
 
                     return (
                       <button
