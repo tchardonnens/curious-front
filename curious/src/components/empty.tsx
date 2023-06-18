@@ -7,9 +7,9 @@ interface EmptyProps {
 }
 
 const Empty: React.FC<EmptyProps> = ({
-    emoji = "🧐",
-    title = "No curious topics",
-    subtitle = "Looks like there's nothing to explore... yet!",
+    emoji,
+    title,
+    subtitle,
 }) => {
 
     return (
