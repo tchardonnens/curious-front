@@ -111,12 +111,12 @@ export default function Home() {
         <Sidebar history={history} isSidebarOpen={isSidebarOpen} isSidebarVisible={isSidebarVisible} fetchResourcesFromHistory={fetchResourcesFromHistory} />
 
         <main className="bg-lightGrey dark:bg-anthracite flex w-full flex-col items-center justify-center text-center">
-          <div className="w-full h-full flex flex-col items-center justify-start px-4 sm:px-10 pt-4 pb-8 sm:py-10 overflow-scroll">
+          <div className="w-full h-full flex flex-col items-center justify-start overflow-y-auto">
             {(!resources && !loading) &&
               <EmptySearch />
             }
-            {(resources || loading) && <div className="max-w-xl w-full mt-2">
-              <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-5 text-dark dark:text-white">
+            {(resources || loading) && <div className="max-w-xl w-full">
+              <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] text-dark dark:text-white">
                 Understand the subject 💡
               </h2>
             </div>}
@@ -126,8 +126,8 @@ export default function Home() {
             {resources && resources.map((resource, index) => {
               return (
                 <div key={index} className="flex flex-col items-center justify-center">
-                  <h2 className='text-3xl mb-4 font-semibold text-neutral-600 dark:text-neutral-400'>{resource.subject}</h2>
-                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-5'>
+                  <h2 className='text-3xl font-semibold text-neutral-600 dark:text-neutral-400'>{resource.subject}</h2>
+                  <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-4'>
                     {resource.contents.map((result, idx) => (
                       <Card
                         key={idx}
@@ -144,7 +144,7 @@ export default function Home() {
 
           </div>
 
-          <form className="max-w-xl w-full px-4 sm:px-10 pb-4 sm:pb-10 relative z-9 bg-transparent" onSubmit={(e) => { e.preventDefault(); fetchResources(); }}>
+          <form className="max-w-3xl w-full px-4 sm:px-10 pb-4 sm:pb-10 relative z-9 bg-transparent" onSubmit={(e) => { e.preventDefault(); fetchResources(); }}>
             <div className='w-auto h-fit-content rounded-md border-solid border-2 border-darkerGrey dark:border-darkGrey flex flex-row shadow-sm p-1'>
               <textarea className="w-full text-black dark:text-darkGrey bg-transparent resize-none outline-none p-1 overflow-y-hidden max-h-24" rows={1} placeholder='How to launch a rocket' value={prompt}
                 onChange={(e) => {

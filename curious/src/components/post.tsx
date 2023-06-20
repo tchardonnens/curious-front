@@ -46,8 +46,8 @@ const Post: React.FC<PostProps> = ({
 }) => {
 
   return (
-    <div className={`w-full mb-8 ${removePostMargin}`}>
-      <div className='flex flex-col justify-center w-full rounded-lg md:p-6 mb-3'>
+    <div className={`w-full h-full`}>
+      <div className='w-full h-full flex flex-col justify-center rounded-lg '>
         <div className={`flex flex-col items-center justify-center gap-2 ${removeUserInfo}`}>
           <ProfilePic src="/pp-feed.png" alt="Avatar" addClass='h-10 w-10' />
           <h2 className="text-2xl text-black dark:text-white">{username}</h2>
@@ -58,7 +58,7 @@ const Post: React.FC<PostProps> = ({
             <TimestampConverter timestamp={post.prompt.created_at} />
           </div>
         </div>
-        <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-4'>
           {post.contents.map((item: any, index: any) => (
             <Card title={item.title} description={item.description} image={item.image} url={item.link} key={index} />
           ))}
