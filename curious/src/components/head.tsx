@@ -21,14 +21,14 @@ function PageHead() {
   } else if (router.pathname === '/search') {
     title = 'Search';
     description = "Unleash your curiosity with Curious Search and explore YouTube, Twitter, and Reddit like never before!";
-  
+
   } else if (router.pathname === '/feed') {
     title = 'Feed';
     description = "Feed your curiosity on Curious! Follow your friends and explore what they've searched for, expanding your knowledge horizons.";
-  
+
   } else if (router.pathname === '/profile') {
     title = 'Profile';
-    description = "SShare your curiosity with the world. Unveil your interests, showcase your searches, and describe yourself within a vibrant community of knowledge enthusiasts.";
+    description = "Share your curiosity with the world. Unveil your interests, showcase your searches, and describe yourself within a vibrant community of knowledge enthusiasts.";
   }
 
 
@@ -38,7 +38,9 @@ function PageHead() {
       <meta name="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
+      <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />
+      <meta property="og:site_name" content="Curious" />
       <meta property="og:description" content={description} />
       <meta property="og:image" content="/sf-dream.png" />
       <meta property="og:url" content="https://verycurious.xyz" />
