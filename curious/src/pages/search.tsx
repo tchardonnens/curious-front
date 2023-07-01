@@ -17,6 +17,7 @@ export default function Home() {
   const [history, setHistory] = useState<SidebarProps[]>([])
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+  const [isSearchVisible, setIsSearchVisible] = useState(true);
 
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -81,25 +82,39 @@ export default function Home() {
   };
 
   const fetchResources = async () => {
-    const resetData: SetStateAction<Resources[] | undefined> = []
-    setResources(resetData)
+    setResources([]); // Reset data
     const token = localStorage.getItem('authToken');
-    console.log(prompt)
-    setLoading(true)
-    console.log('fetching...')
+    setLoading(true);
 
-    const res = await fetch(`${API_BASE_URL}/curious`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify({ prompt })
-    })
-    const data = await res.json()
-    setResources(data)
-    setLoading(false)
-  }
+    try {
+      const response = await fetch(`${API_BASE_URL}/curious`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          prompt: prompt,
+          is_private: isSearchVisible,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      setResources(data);
+
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+      // Optionally set some state here to indicate that an error occurred
+      // setErrorState(true or error.message);
+    } finally {
+      setLoading(false); // Ensure loading is set to false whether the fetch succeeded or not
+    }
+  };
+
 
   return (
     <>
@@ -115,7 +130,7 @@ export default function Home() {
             {(!resources && !loading) &&
               <EmptySearch />
             }
-            {(resources || loading) && <div className="max-w-xl w-full mt-2">
+            {(loading) && <div className="max-w-xl w-full mt-2">
               <h2 className="sm:text-1xl text-4xl font-bold max-w-[708px] mb-5 text-dark dark:text-white">
                 Understand the subject 💡
               </h2>
@@ -126,7 +141,8 @@ export default function Home() {
             {resources && resources.map((resource, index) => {
               return (
                 <div key={index} className="flex flex-col items-center justify-center">
-                  <h2 className='text-3xl mb-4 font-semibold text-neutral-600 dark:text-neutral-400'>{resource.subject}</h2>
+                  <h2 className='text-3xl mb-4 font-semibold text-neutral-800 dark:text-neutral-400'>{resource.subject}</h2>
+                  <p className='flex flex-col font-medium w-full bg-white dark:bg-dark rounded-xl overflow-hidden p-4 mb-4'>{resource.description}</p>
                   <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6 mb-5'>
                     {resource.contents.map((result, idx) => (
                       <Card

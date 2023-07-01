@@ -49,6 +49,7 @@ export type Prompt = {
 export type Resources = {
   prompt: Prompt;
   subject: string;
+  description: string;
   contents: CleanGoogleResults[];
 }
 

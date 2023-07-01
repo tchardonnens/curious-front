@@ -5,13 +5,13 @@ import { FaRedditAlien, FaTwitter, FaYoutube } from 'react-icons/fa';
 const EmptySearch = () => {
 
     return (
-        <div className="w-full m-8 md:mt-0">
+        <div className="w-full md:mt-0">
             <div className='flex flex-col justify-center w-full rounded-lg md:p-6 mb-3'>
                 <div className="flex flex-col items-center justify-center gap-2">
-                <h2 className="text-2xl text-black dark:text-white">Unlock the power of AI</h2>
+                    <h2 className="text-2xl text-black dark:text-white">Unlock the power of AI</h2>
                 </div>
                 <div className="flex flex-col justify-center items-center text-neutral-600 dark:text-neutral-400 p-4 mb-3">
-                <h3>Expand your curiosity by searching on your favorite platforms</h3>
+                    <h3>Expand your curiosity by searching on your favorite platforms</h3>
                 </div>
                 <div className='grid grid-cols-1 lg:grid-cols-3 justify-evenly place-items-center shrink-0 gap-6'>
                     <Card title="How to launch a rocket?" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate" image="youtube_search_placeholder.jpg" icon={FaYoutube} />
